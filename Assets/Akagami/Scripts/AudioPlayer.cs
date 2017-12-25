@@ -26,7 +26,10 @@ namespace gami
             source.GetOutputData(waveData, 1);
             DrawLine();
         }
-
+        public float[] GetWaveData()
+        {
+            return waveData;
+        }
         private void DrawLine()
         {
 

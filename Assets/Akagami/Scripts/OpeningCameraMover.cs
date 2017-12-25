@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if WINDOWS_UWP
+using Windows.Gaming.Input;
+#endif
 namespace gami
 {
     public class OpeningCameraMover : MonoBehaviour
@@ -10,6 +13,10 @@ namespace gami
         public GameObject mainCamera;
         [SerializeField]
         GameObject player;
+        [SerializeField]
+        float LENGTH = 2;
+        [SerializeField]
+        float PLAYER_ROTATE_ANGLE = .5f;
 #if WINDOWS_UWP
         public Gamepad controller;
         public GamepadReading reading;
@@ -42,12 +49,14 @@ namespace gami
                     length.y * length.y +
                     length.z * length.z) <= 1)
                 {
+                    mainCamera.SetActive(true);
                     gami.OpeningObjectsManager.DestroyOpeningObjects();
                 }
             }
             else
             {
-                player.transform.rotation *= Quaternion.AngleAxis(.5f, new Vector3(0, 1, 0));
+                mainCamera.SetActive(false);
+                player.transform.rotation *= Quaternion.AngleAxis(PLAYER_ROTATE_ANGLE, new Vector3(0, 1, 0));
                 player.GetComponent<gami.PlayerMover>().SetControllerFlag(false);
                 player.GetComponent<gami.PlayerMover>().SetGear(3);
                 SetPos();
@@ -62,7 +71,7 @@ namespace gami
             // 現在の向きから後方にメートル移動
             float angleDir = this.transform.eulerAngles.y * Mathf.Deg2Rad;
             Vector3 dir = new Vector3(Mathf.Sin(angleDir),0,Mathf.Cos(angleDir));
-            this.transform.position -= dir;
+            this.transform.position -= dir * LENGTH;
 
             // 左に傾けて後ろに下がる
             // 平たく言えば進行方向に対して右移動
@@ -71,7 +80,7 @@ namespace gami
             // 現在の向きから右方向にメートル移動
             angleDir = this.transform.eulerAngles.y * Mathf.Deg2Rad;
             dir = new Vector3(Mathf.Sin(angleDir),0,Mathf.Cos(angleDir));
-            this.transform.position -= dir;
+            this.transform.position -= dir * LENGTH;
         }
     }
 }

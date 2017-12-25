@@ -40,11 +40,10 @@ namespace gami
         // 自動操縦フラグ by KTB
         // オンなら操縦できないように
         static public bool IsAutoPilot;
-
+        // 現在のギア
         private int NowGear;
-
+        // コントローラー受付フラグ
         public bool isControll = false;
-
 
         private void Start()
         {
@@ -67,7 +66,6 @@ namespace gami
 
         void RotateAction()
         {
-
             float yStick = 0;
             float xStick = 0;
             float trigger = 0;
@@ -146,18 +144,6 @@ namespace gami
             speed += accel;
         }
 
-        void AccelAction()
-        {
-            if (Input.GetButton("Player_Accel"))
-            {
-                // スピードの最大値を決めるか、
-                // スピードをマイフレーム減速させるかは未定
-
-                // 該当する入力があればスピードを加算
-                if (speed >= maxSpeed) return;
-                speed += accel;
-            }
-        }
         void BrakeAction()
         {
             bool brake = false;
@@ -186,8 +172,8 @@ namespace gami
         // 各アクションをコントローラーイベントに保持
         void ControllerEvent()
         {
+            if (isControll == false) return;
             GearChangeAction();
-            //AccelAction();
             BrakeAction();
             RotateAction();
         }
