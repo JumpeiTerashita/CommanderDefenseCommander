@@ -179,16 +179,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4087844638170532}
   - component: {fileID: 54364106295623952}
-  - component: {fileID: 114664156675398432}
   - component: {fileID: 137897051366772088}
   - component: {fileID: 136345672573517916}
-  - component: {fileID: 114776338819814198}
   - component: {fileID: 114009989516463764}
-  - component: {fileID: 96230325609951216}
-  - component: {fileID: 114249896314809400}
   - component: {fileID: 114962886282274030}
-  - component: {fileID: 114644432132194688}
-  - component: {fileID: 114663424495837494}
+  - component: {fileID: 114711673332297172}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -533,7 +528,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1322493986319392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_Children:
   - {fileID: 4003397469651546}
@@ -541,7 +536,7 @@ Transform:
   - {fileID: 4410971078528642}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4150034692484494
 Transform:
   m_ObjectHideFlags: 1
@@ -2076,97 +2071,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1372796351626060}
   m_Enabled: 1
---- !u!96 &96230325609951216
-TrailRenderer:
-  serializedVersion: 2
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322493986319392}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Time: 5
-  m_Parameters:
-    serializedVersion: 2
-    widthMultiplier: 0.1
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.03287238
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 0
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 0.59607846}
-      key1: {r: 0.034482956, g: 0, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
-    alignment: 0
-    textureMode: 0
-    generateLightingData: 0
-  m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
 --- !u!114 &114009989516463764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2179,7 +2083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResetSec: 1
---- !u!114 &114249896314809400
+--- !u!114 &114711673332297172
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2187,66 +2091,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1322493986319392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1df708a190052cc4d90884a938974771, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d3f7240a63dd4b4c9531fb1709ef22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArriveLength: 0.25
-  SpeedMagnitude: 4
---- !u!114 &114644432132194688
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322493986319392}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1d1eae2854a91f4387cd1a35b1966df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletInstLength: 0.25
-  Bullet: {fileID: 1670784669400306, guid: c8357ecf1382e094fa605f032c8af138, type: 2}
---- !u!114 &114663424495837494
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322493986319392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b13241a2f816d44bb549c2fd7ea5805, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
---- !u!114 &114664156675398432
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322493986319392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb32a8f51b513254fb1da3ed16f7214b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 0.1
-  GearSpeed:
-  - 0
-  - 0.005
-  - 0.01
-  - 0.05
-  - 0.1
-  accel: 0.00025
---- !u!114 &114776338819814198
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322493986319392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f9a4403e29f13847b677c84fad36ab5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  Speed: 0.01
 --- !u!114 &114962886282274030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2258,7 +2106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e6059f38909674b8dfe19bb1fb108f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetPos: {x: 0, y: 0, z: 0}
+  TargetPos: {x: -1, y: 0.4, z: 5}
 --- !u!124 &124626960104959954
 Behaviour:
   m_ObjectHideFlags: 1

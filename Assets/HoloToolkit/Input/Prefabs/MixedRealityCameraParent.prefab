@@ -319,7 +319,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1850730992894404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4587520633816736}
@@ -504,7 +504,7 @@ Camera:
   m_GameObject: {fileID: 1372541880982678}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -620,11 +620,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf6ab24363b7a74da25766ea8ba6809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MouseSupported: 1
+  MouseSupported: 0
   MouseXYRotationAxisControl: {fileID: 114465015496195000}
   MouseXYTranslationAxisControl: {fileID: 114225625019075894}
   MouseXZTranslationAxisControl: {fileID: 114755176645041546}
-  KeyboardSupported: 1
+  KeyboardSupported: 0
   KeyboardXYRotationAxisControl: {fileID: 114828096048444974}
   KeyboardXZRotationAxisControl: {fileID: 114121188885475510}
   KeyboardXYTranslationAxisControl: {fileID: 114690106885971528}
@@ -729,7 +729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NearClipPlane_OpaqueDisplay: 0.1
-  CameraClearFlags_OpaqueDisplay: 1
+  CameraClearFlags_OpaqueDisplay: 2
   BackgroundColor_OpaqueDisplay: {r: 0, g: 0, b: 0, a: 1}
   OpaqueQualityLevel: 5
   NearClipPlane_TransparentDisplay: 0.85
