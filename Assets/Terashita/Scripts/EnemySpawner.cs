@@ -18,9 +18,6 @@ namespace KTB
         [SerializeField]
         float SpawnSpan = 5.0f;
 
-        [SerializeField]
-        AI_PATTERN SetBehaviorPattern = AI_PATTERN.STOP;
-
         Vector3 SpawnPoint;
 
         bool isStarted = false;
@@ -57,9 +54,8 @@ namespace KTB
             {
                 GameObject SpawnedEnemy = Instantiate(Enemy, SpawnPoint, Quaternion.identity);
                 SpawnedEnemy.transform.LookAt(Player.transform.position);
-                SpawnedEnemy.GetComponent<EnemyBehavior>().BehaviorPattern = SetBehaviorPattern;
-                Debug.Log(Player.transform.position);
-                Debug.Log(SpawnedEnemy.transform.forward);
+                //Debug.Log(Player.transform.position);
+                //Debug.Log(SpawnedEnemy.transform.forward);
             }
 
             yield return new WaitForSeconds(SpawnSpan);

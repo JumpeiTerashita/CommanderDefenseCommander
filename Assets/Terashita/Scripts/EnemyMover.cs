@@ -23,9 +23,9 @@ namespace KTB
         void FlyToDestination(float _speedMagnitude = 1.0f, float _turnMagnitude = 1.0f)
         {
             // 設定した目的地にだんだん向く
-            Vector3 TargetPos = GetComponent<DestinationHolder>().GetDestination();
-            Quaternion targetRotation = Quaternion.LookRotation(TargetPos - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _turnMagnitude);
+            //Vector3 TargetPos = GetComponent<DestinationHolder>().GetDestination();
+            //Quaternion targetRotation = Quaternion.LookRotation(TargetPos - transform.position);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _turnMagnitude);
 
             // 向いている方向に飛ぶ
             transform.Translate(new Vector3(0, 0, Speed * _speedMagnitude));
