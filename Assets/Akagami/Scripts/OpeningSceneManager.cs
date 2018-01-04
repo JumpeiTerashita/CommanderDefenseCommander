@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace gami
 {
-    public class OpeningObjectsManager : MonoBehaviour
+    public class OpeningSceneManager : MonoBehaviour
     {
         [SerializeField]
         public GameObject[] openingObj = new GameObject[]
@@ -21,7 +21,13 @@ namespace gami
             {
                 Destroy(e);
             }
-            
+        }
+        
+        public static void CreateTimer()
+        {
+            GameObject obj = (GameObject)Resources.Load("TimeManager");
+            obj = Instantiate(obj);
+            obj.AddComponent<ResultSceneLoader>();
         }
     }
 }

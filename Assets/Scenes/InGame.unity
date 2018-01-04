@@ -462,7 +462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &700052452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,6 +556,11 @@ GameObject:
 --- !u!1 &921228578 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1372541880982678, guid: d29bc40b7f3df26479d6a0aac211c355,
+    type: 2}
+  m_PrefabInternal: {fileID: 65503297}
+--- !u!20 &921228583 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 20770519707920992, guid: d29bc40b7f3df26479d6a0aac211c355,
     type: 2}
   m_PrefabInternal: {fileID: 65503297}
 --- !u!1001 &956025596
@@ -652,7 +657,7 @@ Prefab:
         type: 2}
       propertyPath: mainCamera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 921228583}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd72e8904aaa6eb41bf099d717b5d4b8, type: 2}
   m_IsPrefabParent: 0
@@ -756,7 +761,12 @@ Prefab:
         type: 2}
       propertyPath: baseOBj
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 921228578}
+    - target: {fileID: 114971249587305606, guid: 57825276778727943bbfbaa282f96361,
+        type: 2}
+      propertyPath: baseObj
+      value: 
+      objectReference: {fileID: 921228578}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57825276778727943bbfbaa282f96361, type: 2}
   m_IsPrefabParent: 0
@@ -770,7 +780,7 @@ GameObject:
   - component: {fileID: 2046557404}
   - component: {fileID: 2046557403}
   m_Layer: 0
-  m_Name: OpeningObjManager
+  m_Name: OpeningSceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -13,7 +13,7 @@ namespace gami
         // 表示させるための基準オブジェクト情報を保持
         // 現在はカメラを入れています。
         [SerializeField]
-        public GameObject baseOBj;
+        public GameObject baseObj;
         // 非アクティブの際に外部からアクセスするための変数
         private static GameObject arrow;
         [SerializeField]
@@ -32,12 +32,12 @@ namespace gami
         private void SetCursorPos()
         {
             if(lookAtTarget == null||
-                baseOBj == null)
+                baseObj == null)
             {
                 return;
             }
-            this.transform.position = baseOBj.transform.position;
-            this.transform.eulerAngles = baseOBj.transform.eulerAngles;
+            this.transform.position = baseObj.transform.position;
+            this.transform.eulerAngles = baseObj.transform.eulerAngles;
             float angleDir = this.transform.eulerAngles.y * Mathf.Deg2Rad;
             Vector3 dir = new Vector3(Mathf.Sin(angleDir), 0, Mathf.Cos(angleDir));
             this.transform.position += dir * CURSOR_LENGTH;
