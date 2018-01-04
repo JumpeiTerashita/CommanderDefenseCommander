@@ -35,22 +35,29 @@ namespace gami
 #else
             if (Input.GetButtonDown("AutoPilot")) autoFlag = true;
 #endif
+            // ボタンが押されたら
             if (autoFlag)
             {
+                // カメラの位置をメインカメラの位置へ移動させていく
                 Vector3 length = mainCamera.transform.position - this.transform.position;
                 this.transform.position +=
                     length * 0.05f;
                 this.transform.localEulerAngles +=
                     (mainCamera.transform.eulerAngles - this.transform.eulerAngles) * 0.05f;
-
+                // コントローラーの受付開始
                 player.GetComponent<gami.PlayerMover>().SetControllerFlag(true);
+                // ギアを1に
                 player.GetComponent<gami.PlayerMover>().SetGear(1);
                 if (Mathf.Sqrt(length.x * length.x +
                     length.y * length.y +
                     length.z * length.z) <= 1)
                 {
+                    // メインカメラをアクティブ化
                     mainCamera.SetActive(true);
-                    gami.OpeningObjectsManager.DestroyOpeningObjects();
+                    // オブジェクト削除
+                    gami.OpeningSceneManager.DestroyOpeningObjects();
+                    // タイマー作動
+                    gami.OpeningSceneManager.CreateTimer();
                 }
             }
             else

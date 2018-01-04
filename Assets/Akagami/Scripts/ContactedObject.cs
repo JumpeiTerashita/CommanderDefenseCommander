@@ -17,7 +17,7 @@ namespace gami
                 // 制限時間内なら加点
                 if (timer.InLimitTime())
                 {
-                    this.GetComponent<gami.Scoaler>().plusScore(1);
+                    //this.GetComponent<gami.Scoaler>().plusScore(1);
                     return;
                 }
             }

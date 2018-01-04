@@ -1,26 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 namespace gami
 {
-    public class Scoaler
+    public class Scoaler : MonoBehaviour
     {
+        static Scoaler instance;
         private float score = 0;
-        Scoaler()
+        public static Scoaler Instance
         {
-            score = 0;
+            get
+            {
+                if(instance == null)
+                {
+                    GameObject obj = new GameObject("Scoaler");
+                    instance = obj.AddComponent<Scoaler>();
+                }
+                return instance;
+            }
         }
-        ~Scoaler()
+        Scoaler(){}
+        ~Scoaler(){}
+        private void Awake()
         {
-
+            DontDestroyOnLoad(gameObject);
+            instance = this;
         }
-        public void plusScore(float _plusCount)
+        public void PlusScore(float _plusCount)
         {
             score += _plusCount;
         }
-        public float getScore()
+        public float GetScore()
         {
             return score;
+        }
+        public void InitScore()
+        {
+            score = 0;
         }
     }
 }
