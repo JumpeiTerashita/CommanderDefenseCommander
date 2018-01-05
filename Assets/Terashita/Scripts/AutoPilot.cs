@@ -61,6 +61,7 @@ namespace KTB
                 gami.PlayerMover.IsAutoPilot = true;
 
                 CursorPos = CursorInfo.GetCursorPos();
+                //Debug.Log("x : " +CursorPos.x + " y : "+ CursorPos.y + " z : "+ CursorPos.z);
                 GetComponent<DestinationHolder>().SetDestination(CursorPos);
                 transform.LookAt(CursorPos);
               
