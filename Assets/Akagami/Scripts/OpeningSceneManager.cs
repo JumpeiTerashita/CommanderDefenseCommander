@@ -5,6 +5,7 @@ namespace gami
 {
     public class OpeningSceneManager : MonoBehaviour
     {
+        static GameObject thisObj;
         [SerializeField]
         public GameObject[] openingObj = new GameObject[]
         {
@@ -14,6 +15,7 @@ namespace gami
         private void Awake()
         {
             obj = openingObj;
+            thisObj = this.gameObject;
         }
         public static void DestroyOpeningObjects()
         {
@@ -21,6 +23,8 @@ namespace gami
             {
                 Destroy(e);
             }
+            
+            Destroy(thisObj);
         }
         
         public static void CreateTimer()

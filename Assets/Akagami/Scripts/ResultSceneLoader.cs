@@ -16,7 +16,6 @@ namespace gami
                 //SceneManager.LoadScene("");
                 Debug.Log(1);
             }
-            else Debug.Log(2);
         }
     }
 

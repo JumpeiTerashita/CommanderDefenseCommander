@@ -8,7 +8,6 @@ namespace gami
 {
     public class OpeningCameraMover : MonoBehaviour
     {
-
         [SerializeField]
         public GameObject mainCamera;
         [SerializeField]
@@ -22,7 +21,10 @@ namespace gami
         public GamepadReading reading;
 #endif
         private bool autoFlag = false;
-
+        private void Start()
+        {
+            mainCamera.transform.parent = player.transform;
+        }
         // Update is called once per frame
         void Update()
         {
@@ -38,56 +40,59 @@ namespace gami
             // ボタンが押されたら
             if (autoFlag)
             {
+                mainCamera.transform.parent = null;
                 // カメラの位置をメインカメラの位置へ移動させていく
-                Vector3 length = mainCamera.transform.position - this.transform.position;
-                this.transform.position +=
-                    length * 0.05f;
-                this.transform.localEulerAngles +=
-                    (mainCamera.transform.eulerAngles - this.transform.eulerAngles) * 0.05f;
+                //Vector3 length = mainCamera.transform.position - this.transform.position;
+                //this.transform.position +=
+                //    length * 0.05f;
+                //this.transform.localEulerAngles +=
+                //    (mainCamera.transform.eulerAngles - this.transform.eulerAngles) * 0.05f;
+
+                //if (Mathf.Sqrt(length.x * length.x +
+                //    length.y * length.y +
+                //    length.z * length.z) <= 1)
+                //{
+                // メインカメラをアクティブ化
+                //mainCamera.SetActive(true);
+                // オブジェクト削除
+                gami.OpeningSceneManager.DestroyOpeningObjects();
+                    // タイマー作動
+                gami.OpeningSceneManager.CreateTimer();
+                //}
+               
                 // コントローラーの受付開始
                 player.GetComponent<gami.PlayerMover>().SetControllerFlag(true);
                 // ギアを1に
                 player.GetComponent<gami.PlayerMover>().SetGear(1);
-                if (Mathf.Sqrt(length.x * length.x +
-                    length.y * length.y +
-                    length.z * length.z) <= 1)
-                {
-                    // メインカメラをアクティブ化
-                    mainCamera.SetActive(true);
-                    // オブジェクト削除
-                    gami.OpeningSceneManager.DestroyOpeningObjects();
-                    // タイマー作動
-                    gami.OpeningSceneManager.CreateTimer();
-                }
             }
             else
             {
-                mainCamera.SetActive(false);
+                //mainCamera.SetActive(false);
                 player.transform.rotation *= Quaternion.AngleAxis(PLAYER_ROTATE_ANGLE, new Vector3(0, 1, 0));
                 player.GetComponent<gami.PlayerMover>().SetControllerFlag(false);
                 player.GetComponent<gami.PlayerMover>().SetGear(3);
-                SetPos();
+                //SetPos();
             }
         }
         private void SetPos()
         {
             // プレイヤーに向きと位置をあわせる
-            this.transform.position = player.transform.position;
-            this.transform.eulerAngles =
+            mainCamera.transform.position = player.transform.position;
+            mainCamera.transform.eulerAngles =
                 player.transform.eulerAngles;
             // 現在の向きから後方にメートル移動
-            float angleDir = this.transform.eulerAngles.y * Mathf.Deg2Rad;
+            float angleDir = mainCamera.transform.eulerAngles.y * Mathf.Deg2Rad;
             Vector3 dir = new Vector3(Mathf.Sin(angleDir),0,Mathf.Cos(angleDir));
-            this.transform.position -= dir * LENGTH;
+            mainCamera.transform.position -= dir * LENGTH;
 
             // 左に傾けて後ろに下がる
             // 平たく言えば進行方向に対して右移動
-            this.transform.rotation *=
+            mainCamera.transform.rotation *=
                 Quaternion.AngleAxis(-90, new Vector3(0, 1, 0));
             // 現在の向きから右方向にメートル移動
-            angleDir = this.transform.eulerAngles.y * Mathf.Deg2Rad;
+            angleDir = mainCamera.transform.eulerAngles.y * Mathf.Deg2Rad;
             dir = new Vector3(Mathf.Sin(angleDir),0,Mathf.Cos(angleDir));
-            this.transform.position -= dir * LENGTH;
+            mainCamera.transform.position -= dir * LENGTH;
         }
     }
 }
