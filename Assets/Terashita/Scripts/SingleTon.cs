@@ -1,47 +1,93 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-/// <summary>
-/// Singletonパターン（MonoBehavior継承）
-/// </summary>
-public abstract class SingleTon<T> : MonoBehaviour where T : MonoBehaviour
+namespace KTB
 {
-    private static T instance;
-    public static T Instance
+    /// <summary>
+    /// Singletonパターン（MonoBehavior継承）
+    /// </summary>
+    public class SingleTon<T> : MonoBehaviourWithInit where T : MonoBehaviourWithInit
     {
-        get
-        {
-            if (instance == null)
-            {
-                var t = typeof(T);
 
-                instance = (T)FindObjectOfType(t);
-                if (instance == null)
+        //インスタンス
+        private static T _instance;
+
+        //インスタンスを外部から参照する用(getter)
+        public static T Instance
+        {
+            get
+            {
+                //インスタンスがまだ作られていない
+                if (_instance == null)
                 {
-                    Debug.LogError(t + " をアタッチしているGameObjectはありません");
+
+                    //シーン内からインスタンスを取得
+                    _instance = (T)FindObjectOfType(typeof(T));
+
+                    //シーン内に存在しない場合はエラー
+                    if (_instance == null)
+                    {
+                        Debug.LogError(typeof(T) + " is nothing");
+                    }
+                    //発見した場合は初期化
+                    else
+                    {
+                        _instance.InitIfNeeded();
+                    }
                 }
+                return _instance;
+            }
+        }
+
+        //=================================================================================
+        //初期化
+        //=================================================================================
+
+        protected sealed override void Awake()
+        {
+            //存在しているインスタンスが自分であれば問題なし
+            if (this == Instance)
+            {
+                return;
             }
 
-            return instance;
+            //自分じゃない場合は重複して存在しているので、エラー
+            Debug.LogError(typeof(T) + " is duplicated");
         }
+
     }
 
-    virtual protected void Awake()
+    /// <summary>
+    /// 初期化メソッドを備えたMonoBehaviour
+    /// </summary>
+    public class MonoBehaviourWithInit : MonoBehaviour
     {
-        // 他のGameObjectにもアタッチされていたら破棄
-        if (this != Instance)
+
+        //初期化したかどうかのフラグ(一度しか初期化が走らないようにするため)
+        private bool _isInitialized = false;
+
+        /// <summary>
+        /// 必要なら初期化する
+        /// </summary>
+        public void InitIfNeeded()
         {
-            Destroy(this);
-            //Destroy(this.gameObject);
-            Debug.LogError(
-                typeof(T) +
-                " は既に他のGameObjectにアタッチされているため、コンポーネントを破棄しました." +
-                " アタッチされているGameObjectは " + Instance.gameObject.name + " です.");
-            return;
+            if (_isInitialized)
+            {
+                return;
+            }
+            Init();
+            _isInitialized = true;
         }
 
-      //  DontDestroyOnLoad(this.gameObject);
-    }
+        /// <summary>
+        /// 初期化(Awake時かその前の初アクセス、どちらかの一度しか行われない)
+        /// </summary>
+        protected virtual void Init() { }
 
+        //sealed overrideするためにvirtualで作成
+        protected virtual void Awake() { }
+
+    }
 }

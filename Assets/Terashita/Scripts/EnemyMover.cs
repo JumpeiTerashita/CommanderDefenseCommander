@@ -8,6 +8,11 @@ namespace KTB
     {
         [SerializeField]
         float Speed = 0.01f;
+
+        public int Id;
+
+        bool IsDead = false;
+
         // Use this for initialization
         void Start()
         {
@@ -37,8 +42,14 @@ namespace KTB
         /// </summary>
         void Destroy()
         {
-            Debug.Log("Destroy -- Enemy");
-            Destroy(gameObject);
+            if (!IsDead)
+            {
+                IsDead = true;
+                Debug.Log("Destroy -- Enemy " + Id);
+                BoidsController.Instance.SendMessage("Delete",Id);
+                Destroy(gameObject);
+            }
+            
         }
     }
 }

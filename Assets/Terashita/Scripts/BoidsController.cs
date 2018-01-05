@@ -2,9 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 namespace KTB
 {
-    public class BoidsController : MonoBehaviour
+    public class BoidsController : SingleTon<BoidsController>
     {
         /// <summary>
         /// 群れの個体数を指定します。
@@ -50,18 +51,19 @@ namespace KTB
         /// <summary>
         /// 群れとして扱う各個体を配列として扱います。
         /// </summary>
-        GameObject[] BoidsChildren;
+        Dictionary<int, GameObject> BoidsChildren = new Dictionary<int, GameObject>();
+            //List<GameObject> BoidsChildren = new List<GameObject>();
+        //GameObject[] BoidsChildren;
 
-        // Use this for initialization
-        void Start()
+        protected override void Init()
         {
-            //子供を生成して適当な位置に置きます。
-            this.BoidsChildren = new GameObject[MaxChild];
-
+            base.Init();
             for (int i = 0; i < this.MaxChild; i++)
             {
-                this.BoidsChildren[i] = GameObject.Instantiate(BoidsChild) as GameObject;
-                this.BoidsChildren[i].transform.position
+                GameObject Child = GameObject.Instantiate(BoidsChild) as GameObject;
+                BoidsChildren.Add(i,Child);
+                Child.GetComponent<EnemyMover>().Id = i;
+                Child.transform.position
                     = new Vector3(Random.Range(-2f, 2f),
                                   Random.Range(-2, 2f),
                                   //this.BoidsChild.transform.position.y,
@@ -74,11 +76,11 @@ namespace KTB
         {
             //各個体の座標から、群れの中央の座標を求めます。
             Vector3 center = Vector3.zero;
-            foreach (GameObject child in this.BoidsChildren)
+            foreach (GameObject child in this.BoidsChildren.Values)
             {
                 center += child.transform.position;
             }
-            center /= (BoidsChildren.Length - 1);
+            center /= (BoidsChildren.Count - 1);
 
             //ここでは群れをコントロールするために、
             //仮に、ボスの方へ向かう習性があるとします。
@@ -88,7 +90,7 @@ namespace KTB
             this.BoidsCenter.transform.position = center;
 
             //[特性-1 : 各個体は群れの中央に寄ろうとする]
-            foreach (GameObject child in this.BoidsChildren)
+            foreach (GameObject child in this.BoidsChildren.Values)
             {
                 //中央方向への単位ベクトルを取得して、その方向へ向かおうとさせます。
                 //係数が大きいほどその個体の個性が反映され、自分の進行方向へ移動します。
@@ -116,9 +118,9 @@ namespace KTB
             //Collider を利用しない場合は、
             //適度な距離を保てるような仕組みを用意する必要があります。
 
-            foreach (GameObject child_a in this.BoidsChildren)
+            foreach (GameObject child_a in this.BoidsChildren.Values)
             {
-                foreach (GameObject child_b in this.BoidsChildren)
+                foreach (GameObject child_b in this.BoidsChildren.Values)
                 {
                     if (child_a == child_b)
                     {
@@ -142,11 +144,11 @@ namespace KTB
 
             //各個体のベクトルから、群れの平均ベクトルを求めます。
             Vector3 averageVelocity = Vector3.zero;
-            foreach (GameObject child in this.BoidsChildren)
+            foreach (GameObject child in this.BoidsChildren.Values)
             {
                 averageVelocity += child.GetComponent<Rigidbody>().velocity;
             }
-            averageVelocity /= this.BoidsChildren.Length;
+            averageVelocity /= this.BoidsChildren.Count;
 
             //[特性-3 : 各個体は群れの平均移動ベクトルに合わせようとする]
             //この特性-3はなくてもそれなりに動きます。
@@ -156,7 +158,7 @@ namespace KTB
             //したがって、不要なら特性3は無視しても良いかもしれません。
             //例えば遠方の群れであったり、個体数があまりにも多い場合には、
             //見た目にほとんど変化が現れない可能性があります。
-            foreach (GameObject child in this.BoidsChildren)
+            foreach (GameObject child in this.BoidsChildren.Values)
             {
                 //Turbulence は群れ乱れの係数です。
                 //最小値は 0 で、最大値は 1 です。
@@ -196,6 +198,10 @@ namespace KTB
             }
         }
 
+        void Delete(int _Id)
+        {
+            BoidsChildren.Remove(_Id);
+        }
     }
 }
 
