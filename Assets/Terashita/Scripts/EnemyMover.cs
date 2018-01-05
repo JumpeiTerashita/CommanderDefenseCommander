@@ -17,7 +17,7 @@ namespace KTB
         // Update is called once per frame
         void Update()
         {
-            FlyToDestination();
+            //FlyToDestination();
         }
 
         void FlyToDestination(float _speedMagnitude = 1.0f, float _turnMagnitude = 1.0f)

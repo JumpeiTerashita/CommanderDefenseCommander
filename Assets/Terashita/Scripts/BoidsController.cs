@@ -62,10 +62,10 @@ namespace KTB
             {
                 this.BoidsChildren[i] = GameObject.Instantiate(BoidsChild) as GameObject;
                 this.BoidsChildren[i].transform.position
-                    = new Vector3(Random.Range(-1f, 1f),
-                                  Random.Range(0, 10f),
+                    = new Vector3(Random.Range(-2f, 2f),
+                                  Random.Range(-2, 2f),
                                   //this.BoidsChild.transform.position.y,
-                                  Random.Range(-1f, 1f));
+                                  Random.Range(-2f, 2f));
             }
         }
 
@@ -102,7 +102,7 @@ namespace KTB
                 //ここでは取りあえず毎回ランダムにします。
                 //各個体の個性の差が大きいほど、群れ全体がバラつきます。
                 //各個体が固有の速度の差が大きいほど縦長の群れを形成しやすくなります。
-                direction *= Random.Range(20f, 30f);
+                direction *= Random.Range(2f, 5f);
 
                 child.GetComponent<Rigidbody>().velocity = direction;
             }
@@ -192,7 +192,7 @@ namespace KTB
                 child.transform.rotation =
                     Quaternion.Slerp(child.transform.rotation,
                                      Quaternion.LookRotation(averageVelocity.normalized),
-                                     Time.deltaTime * SpeedMagnitude);
+                                     Time.deltaTime * 3.0f);
             }
         }
 

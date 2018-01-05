@@ -52,8 +52,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxChild: 5
-  Turbulence: 0.1
+  Turbulence: 0
   Distance: 0.1
+  SpeedMagnitude: 0.01
   BoidsChild: {fileID: 1098841885779422, guid: debf0103d105a6444a563dc13d06cc4d, type: 2}
   BoidsCenter: {fileID: 0}
   ChaseTarget: {fileID: 0}
