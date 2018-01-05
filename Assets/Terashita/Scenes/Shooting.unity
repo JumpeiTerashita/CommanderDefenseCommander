@@ -559,6 +559,11 @@ Prefab:
       propertyPath: ChaseTarget
       value: 
       objectReference: {fileID: 1318087948}
+    - target: {fileID: 114406555106186818, guid: 6b9ca4df3d05d664eba88c1f700f5ec0,
+        type: 2}
+      propertyPath: Turbulence
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b9ca4df3d05d664eba88c1f700f5ec0, type: 2}
   m_IsPrefabParent: 0
