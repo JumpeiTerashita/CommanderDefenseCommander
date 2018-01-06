@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 namespace KTB
 {
+    // TODO : BoidsControllerがシングルトンだと群れが一つしかできないじゃないか！
+    //        複製しやすい形にしろ
     public class BoidsController : SingleTon<BoidsController>
     {
         /// <summary>
@@ -26,9 +28,6 @@ namespace KTB
         /// </summary>
         [SerializeField]
         float Distance = 4f;
-
-        [SerializeField]
-        float SpeedMagnitude = 1.0f;
 
         /// <summary>
         /// 群れにする個体
@@ -76,6 +75,7 @@ namespace KTB
         {
             //各個体の座標から、群れの中央の座標を求めます。
             Vector3 center = Vector3.zero;
+            if (BoidsChildren.Count == 0) return;
             foreach (GameObject child in this.BoidsChildren.Values)
             {
                 center += child.transform.position;

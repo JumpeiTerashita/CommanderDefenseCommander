@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace KTB
 {
+    // TODO : 敵が目的地到着したら目的地決め直すのはどう？
     [RequireComponent(typeof(SphereCollider))]
 
     /// <summary>

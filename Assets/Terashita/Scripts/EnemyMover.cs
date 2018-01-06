@@ -16,7 +16,7 @@ namespace KTB
         // Use this for initialization
         void Start()
         {
-            GetComponent<DestinationHolder>().SetDestination();
+            //GetComponent<DestinationHolder>().SetDestination();
         }
 
         // Update is called once per frame
