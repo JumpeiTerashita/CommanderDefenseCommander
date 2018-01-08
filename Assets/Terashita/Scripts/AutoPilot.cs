@@ -50,10 +50,10 @@ namespace KTB
             if(controller != null)
             {
                 reading = controller.GetCurrentReading();
-                if(reading.Buttons.HasFlag(GamepadButtons.X))autoPilot = true;
+                if(reading.Buttons.HasFlag(GamepadButtons.X)&&CanAutoPilot())autoPilot = true;
             }
 #else
-            if (Input.GetButtonDown("AutoPilot")) autoPilot = true;
+            if (Input.GetButtonDown("AutoPilot") && CanAutoPilot()) { autoPilot = true; }
 #endif
             if (autoPilot&&!gami.PlayerMover.IsAutoPilot)
             {
@@ -70,20 +70,29 @@ namespace KTB
             if (gami.PlayerMover.IsAutoPilot)
             {
                 FlyToDestination(SpeedMagnitude);
-                float DistanceTwice = (CursorPos - transform.position).sqrMagnitude;
-
-                if (DistanceTwice <= (ArriveLength*ArriveLength))
+                
+                if (!CanAutoPilot())
                 {
                     Debug.Log("AutoPilot disabled");
                     gami.PlayerMover.IsAutoPilot = false;
                     GetComponent<gami.PlayerMover>().SetSpeed(0.005f);
-
-                    
                     
                     transform.LookAt(new Vector3(0,0,10));
                 }
             }
 
+        }
+
+        /// <summary>
+        /// 自動操縦可能かどうか調べる
+        /// カーソルと現在のポジションの距離　＞　ArriveLength
+        /// ならtrue
+        /// </summary>
+        bool CanAutoPilot()
+        {
+            Vector3 Distance = CursorPos - transform.position;
+            if (KTB.MyMath.IsShortLength(Distance, ArriveLength)) { Debug.Log("No!"); return false; }
+            else return true;
         }
 
         void FlyToDestination(float _speedMagnitude = 1.0f, float _turnMagnitude = 1.0f)
