@@ -7,7 +7,7 @@ namespace KTB
 {
     // TODO : BoidsControllerがシングルトンだと群れが一つしかできないじゃないか！
     //        複製しやすい形にしろ
-    public class BoidsController : SingleTon<BoidsController>
+    public class BoidsController : MonoBehaviour
     {
         /// <summary>
         /// 群れの個体数を指定します。
@@ -47,21 +47,29 @@ namespace KTB
         [SerializeField]
         GameObject ChaseTarget;
 
+        [SerializeField]
+        float ArriveLength = 0.3f;
+
         /// <summary>
         /// 群れとして扱う各個体を配列として扱います。
         /// </summary>
         Dictionary<int, GameObject> BoidsChildren = new Dictionary<int, GameObject>();
-            //List<GameObject> BoidsChildren = new List<GameObject>();
+        //List<GameObject> BoidsChildren = new List<GameObject>();
         //GameObject[] BoidsChildren;
 
-        protected override void Init()
+        
+
+        //protected override void Init()
+        void Start()
         {
-            base.Init();
+            //base.Init();
             for (int i = 0; i < this.MaxChild; i++)
             {
                 GameObject Child = GameObject.Instantiate(BoidsChild) as GameObject;
                 BoidsChildren.Add(i,Child);
+                Child.transform.SetParent(this.transform);
                 Child.GetComponent<EnemyMover>().Id = i;
+                Child.GetComponent<EnemyMover>().BoidsController = this.gameObject;
                 Child.transform.position
                     = new Vector3(Random.Range(-2f, 2f),
                                   Random.Range(-2, 2f),
@@ -73,9 +81,22 @@ namespace KTB
         // Update is called once per frame
         void Update()
         {
+            foreach (GameObject child in this.BoidsChildren.Values)
+            {
+                var Distance = ChaseTarget.transform.position - child.transform.position;
+                if (MyMath.IsShortLength(Distance,ArriveLength))
+                {
+                    ChaseTarget.GetComponent<RandomChaseTarget>().ResetPos();
+                }
+            }
             //各個体の座標から、群れの中央の座標を求めます。
             Vector3 center = Vector3.zero;
-            if (BoidsChildren.Count == 0) return;
+            if (BoidsChildren.Count == 0)
+            {
+                Destroy();
+                return;
+            }
+
             foreach (GameObject child in this.BoidsChildren.Values)
             {
                 center += child.transform.position;
@@ -201,6 +222,12 @@ namespace KTB
         void Delete(int _Id)
         {
             BoidsChildren.Remove(_Id);
+        }
+
+        void Destroy()
+        {
+            Debug.Log("Boids Destroied");
+            Destroy(this.gameObject);
         }
     }
 }
