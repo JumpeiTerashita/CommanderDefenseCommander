@@ -13,6 +13,8 @@ namespace KTB
 
         bool IsDead = false;
 
+        public GameObject BoidsController;
+
         // Use this for initialization
         void Start()
         {
@@ -46,7 +48,7 @@ namespace KTB
             {
                 IsDead = true;
                 Debug.Log("Destroy -- Enemy " + Id);
-                BoidsController.Instance.SendMessage("Delete",Id);
+                BoidsController.SendMessage("Delete",Id);
                 Destroy(gameObject);
             }
             

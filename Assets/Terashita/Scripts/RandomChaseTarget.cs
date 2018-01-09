@@ -55,5 +55,11 @@ namespace KTB
             StartCoroutine(ChangePosLoop());
         }
 
+        public void ResetPos()
+        {
+            StopCoroutine(ChangePosLoop());
+            isRunning = false;
+            StartCoroutine(ChangePosLoop());
+        }
     }
 }
