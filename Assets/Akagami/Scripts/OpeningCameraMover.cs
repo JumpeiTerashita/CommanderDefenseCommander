@@ -32,13 +32,14 @@ namespace gami
             if(controller != null)
             {
                 reading = controller.GetCurrentReading();
-                if(reading.Buttons.HasFlag(GamepadButtons.X))autoFlag=true;
+                // if(reading.Buttons.HasFlag(GamepadButtons.A))
+                if(reading.Buttons.HasFlag(GamepadButtons.X)){autoFlag=true;}
             }
 #else
             if (Input.GetButtonDown("AutoPilot")) autoFlag = true;
 #endif
             // ボタンが押されたら
-            if (autoFlag)
+            if (autoFlag == true)
             {
                 mainCamera.transform.parent = null;
                 // カメラの位置をメインカメラの位置へ移動させていく
