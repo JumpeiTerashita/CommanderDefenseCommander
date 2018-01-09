@@ -10,6 +10,9 @@ namespace KTB
         public GameObject InstEffect;
 
         [SerializeField]
+        public GameObject[] Explosion = new GameObject[10];
+
+        [SerializeField]
         float Speed = 0.01f;
 
         public int Id;
@@ -52,11 +55,26 @@ namespace KTB
             if (!IsDead)
             {
                 IsDead = true;
-                Debug.Log("Destroy -- Enemy " + Id);
-                BoidsController.SendMessage("Delete",Id);
-                Destroy(gameObject);
+
+                StartCoroutine(ExplosionPhase());
             }
-            
+        }
+
+        IEnumerator ExplosionPhase()
+        {
+            int RandomNum = Random.Range(0,5);
+            var Explode = Instantiate(Explosion[RandomNum]);
+           
+            Explode.transform.position = transform.position;
+            Explode.transform.SetParent(this.gameObject.transform);
+            Explode.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+
+            float ExplodeTime = Explosion[0].GetComponent<AutoDestroy>().GetDestroyLimit();
+            yield return new WaitForSeconds(ExplodeTime);
+            Debug.Log("Destroy -- Enemy " + Id);
+            BoidsController.SendMessage("Delete", Id);
+            Destroy(gameObject);
+            yield break;
         }
     }
 }

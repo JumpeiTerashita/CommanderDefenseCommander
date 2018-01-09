@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 198743603643171392}
   - component: {fileID: 199263038336828006}
   - component: {fileID: 123881606144949482}
+  - component: {fileID: 114254684040941366}
   m_Layer: 0
   m_Name: ShortExplosion (Gold)
   m_TagString: Untagged
@@ -37,11 +38,23 @@ Transform:
   m_GameObject: {fileID: 1028623033100434}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
+--- !u!114 &114254684040941366
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1028623033100434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc2aa3db483d784bbd41ca2b336b74f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyLimit: 1.2
 --- !u!123 &123881606144949482
 LensFlare:
   m_ObjectHideFlags: 1
@@ -66,7 +79,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 1
   simulationSpeed: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -116,7 +129,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1076486304
+  randomSeed: -1287141704
   InitialModule:
     serializedVersion: 3
     enabled: 1
