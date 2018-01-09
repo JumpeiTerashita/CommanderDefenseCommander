@@ -13,10 +13,11 @@ namespace gami
 //#endif
     public class PlayerMover : MonoBehaviour
     {
+        public static int aho;
 #if WINDOWS_UWP
-        public Gamepad controller;
-        public GamepadReading reading;
-        public GamepadReading oldButton;
+        public static Gamepad controller;
+        public static GamepadReading reading;
+        public static GamepadReading oldButton;
 #endif
         [SerializeField]
         public float maxSpeed = 0.01f;

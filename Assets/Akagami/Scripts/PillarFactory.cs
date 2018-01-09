@@ -53,7 +53,7 @@ namespace gami
             // Yボタン入力でフラグを管理
             bool sideChange = false;
 #if WINDOWS_UWP
-            reading = controller.GetCurrentReading();
+            reading = gami.PlayerMover.reading;
             if(reading.Buttons.HasFlag(GamepadButtons.Y))
             {
                 sideChange = true;

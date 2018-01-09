@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 #if WINDOWS_UWP
 using Windows.Gaming.Input;
 #endif
@@ -28,16 +29,13 @@ namespace gami
         // Update is called once per frame
         void Update()
         {
+
 #if WINDOWS_UWP
-            if(controller != null)
+            if(gami.PlayerMover.controller != null)
             {
-                reading = controller.GetCurrentReading();
+                reading = gami.PlayerMover.reading;
             }
-            if(reading.Buttons.HasFlag(GamepadButtons.A)){autoFlag = true; 
-             GameObject obj = Instantiate(player);
-                obj.transform.position = new Vector3(player.transform.position.x,player.transform.position.y,player.transform.position.z-1);
-                
-                }
+      
             if(reading.Buttons.HasFlag(GamepadButtons.X)){autoFlag = true;}
 #else
             if (Input.GetButtonDown("AutoPilot")) autoFlag = true;
