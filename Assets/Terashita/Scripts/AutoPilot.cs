@@ -49,9 +49,9 @@ namespace KTB
 #if WINDOWS_UWP
             if(controller != null)
             {
-                reading = controller.GetCurrentReading();
-                if(reading.Buttons.HasFlag(GamepadButtons.X)&&CanAutoPilot())autoPilot = true;
+                reading = gami.PlayerMover.reading;
             }
+            if(reading.Buttons.HasFlag(GamepadButtons.X)&&CanAutoPilot())autoPilot = true;
 #else
             if (Input.GetButtonDown("AutoPilot") && CanAutoPilot()) { autoPilot = true; }
 #endif
@@ -59,7 +59,7 @@ namespace KTB
             {
                 Debug.Log("AutoPilot enabled");
                 gami.PlayerMover.IsAutoPilot = true;
-
+        
                 CursorPos = CursorInfo.GetCursorPos();
                 //Debug.Log("x : " +CursorPos.x + " y : "+ CursorPos.y + " z : "+ CursorPos.z);
                 GetComponent<DestinationHolder>().SetDestination(CursorPos);
