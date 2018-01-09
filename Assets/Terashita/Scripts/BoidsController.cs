@@ -5,8 +5,6 @@ using System.Collections.Generic;
 
 namespace KTB
 {
-    // TODO : BoidsControllerがシングルトンだと群れが一つしかできないじゃないか！
-    //        複製しやすい形にしろ
     public class BoidsController : MonoBehaviour
     {
         /// <summary>
@@ -27,7 +25,7 @@ namespace KTB
         /// 各個体の距離を指定します。大きいほど各個体が距離を取ります。
         /// </summary>
         [SerializeField]
-        float Distance = 4f;
+        float Distance = 0.1f;
 
         /// <summary>
         /// 群れにする個体
@@ -50,6 +48,12 @@ namespace KTB
         [SerializeField]
         float ArriveLength = 0.3f;
 
+        [SerializeField]
+        float SpeedMagnitude = 0.3f;
+
+        [SerializeField]
+        float InstDispersion = 0.5f;
+
         /// <summary>
         /// 群れとして扱う各個体を配列として扱います。
         /// </summary>
@@ -57,11 +61,13 @@ namespace KTB
         //List<GameObject> BoidsChildren = new List<GameObject>();
         //GameObject[] BoidsChildren;
 
+        bool IsStarted;
         
 
         //protected override void Init()
         void Start()
         {
+            StartCoroutine(StandByPhase());
             //base.Init();
             for (int i = 0; i < this.MaxChild; i++)
             {
@@ -71,16 +77,18 @@ namespace KTB
                 Child.GetComponent<EnemyMover>().Id = i;
                 Child.GetComponent<EnemyMover>().BoidsController = this.gameObject;
                 Child.transform.position
-                    = new Vector3(Random.Range(-2f, 2f),
-                                  Random.Range(-2, 2f),
+                    = new Vector3(Random.Range(-InstDispersion, InstDispersion),
+                                  Random.Range(-InstDispersion, InstDispersion),
                                   //this.BoidsChild.transform.position.y,
-                                  Random.Range(-2f, 2f));
+                                  Random.Range(-InstDispersion, InstDispersion));
             }
         }
 
         // Update is called once per frame
         void Update()
         {
+            if (!IsStarted) return;
+
             foreach (GameObject child in this.BoidsChildren.Values)
             {
                 var Distance = ChaseTarget.transform.position - child.transform.position;
@@ -127,7 +135,7 @@ namespace KTB
                 //各個体が固有の速度の差が大きいほど縦長の群れを形成しやすくなります。
                 direction *= Random.Range(2f, 5f);
 
-                child.GetComponent<Rigidbody>().velocity = direction;
+                child.GetComponent<Rigidbody>().velocity = direction *SpeedMagnitude;
             }
 
             //[特性-2 : 各個体は互いに距離を取ろうとする]
@@ -217,6 +225,14 @@ namespace KTB
                                      Quaternion.LookRotation(averageVelocity.normalized),
                                      Time.deltaTime * 3.0f);
             }
+        }
+
+        IEnumerator StandByPhase()
+        {
+            float DestroyTime = BoidsChild.GetComponent<EnemyMover>().InstEffect.GetComponent<AutoDestroy>().GetDestroyLimit();
+            yield return new WaitForSeconds(DestroyTime);
+            IsStarted = true;
+            yield break;
         }
 
         void Delete(int _Id)

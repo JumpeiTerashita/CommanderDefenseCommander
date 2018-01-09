@@ -25,6 +25,11 @@ namespace KTB
             DestroyLimit = _DestroyLimit;
         }
 
+        public float GetDestroyLimit()
+        {
+            return DestroyLimit;
+        }
+
         IEnumerator Destroy()
         {
             yield return new WaitForSeconds(DestroyLimit);

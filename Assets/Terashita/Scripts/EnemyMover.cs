@@ -7,6 +7,9 @@ namespace KTB
     public class EnemyMover : MonoBehaviour
     {
         [SerializeField]
+        public GameObject InstEffect;
+
+        [SerializeField]
         float Speed = 0.01f;
 
         public int Id;
@@ -18,6 +21,8 @@ namespace KTB
         // Use this for initialization
         void Start()
         {
+            var EnemyInst = Instantiate(InstEffect);
+            EnemyInst.transform.position = transform.position;
             //GetComponent<DestinationHolder>().SetDestination();
         }
 
