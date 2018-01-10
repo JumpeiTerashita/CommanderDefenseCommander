@@ -10,7 +10,6 @@ namespace KTB
     public class AutoPilot : MonoBehaviour
     {
 #if WINDOWS_UWP
-        public Gamepad controller;
         public GamepadReading reading;
 #endif
         
@@ -27,27 +26,18 @@ namespace KTB
         // Use this for initialization
         void Start()
         {
-#if WINDOWS_UWP
-            // Gamepadを探す
-        if(Gamepad.Gamepads.Count > 0) {
-            //Debug.Log("Gamepad found.");
-            //controller = Gamepad.Gamepads.First();
-        } else
-        {
-            Debug.Log("Gamepad not found.");
-        }
-        // ゲームパッド追加時イベント処理を追加
-        //Gamepad.GamepadAdded += Gamepad_GamepadAdded;
-#endif
+
         }
 
         // Update is called once per frame
         void Update()
         {
             bool autoPilot = false;
-#if WINDOWS_UWP
-            reading = gami.PlayerMover.reading;
 
+#if WINDOWS_UWP
+
+            reading = 
+            ControlEventGetter.Instance.reading;
             if(reading.Buttons.HasFlag(GamepadButtons.X)&&CanAutoPilot())autoPilot = true;
 #else
             if (Input.GetButtonDown("AutoPilot") && CanAutoPilot()) { autoPilot = true; }
