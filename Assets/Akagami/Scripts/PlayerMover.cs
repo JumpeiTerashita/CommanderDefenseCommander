@@ -14,7 +14,6 @@ namespace gami
     public class PlayerMover : MonoBehaviour
     {
 #if WINDOWS_UWP
-        public static Gamepad controller;
         public static GamepadReading reading;
         public static GamepadReading oldButton;
 #endif
@@ -47,9 +46,6 @@ namespace gami
 
         private void Start()
         {
-#if WINDOWS_UWP
-        
-#endif
 
             NowGear = 1;
             IsAutoPilot = false;
@@ -174,7 +170,7 @@ namespace gami
             if(controller != null)
             {
                 oldButton = reading;
-                reading = controller.GetCurrentReading();
+                reading = ControlEventGetter.Instance.reading;
             }
 #endif
             if (!IsAutoPilot)
@@ -207,13 +203,7 @@ namespace gami
         {
             isControll = _flag;
         }
-#if WINDOWS_UWP
-        // ゲームパッド追加時のイベント処理
-        private void Gamepad_GamepadAdded(object sender, Gamepad e)
-        {
-            controller = e;
-        }
-#endif
+
     }
 
 }
