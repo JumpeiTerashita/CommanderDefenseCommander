@@ -48,16 +48,7 @@ namespace gami
         private void Start()
         {
 #if WINDOWS_UWP
-        // Gamepadを探す
-        if(Gamepad.Gamepads.Count > 0) {
-            //Debug.Log("Gamepad found.");
-            //controller = Gamepad.Gamepads.First();
-        } else
-        {
-            Debug.Log("Gamepad not found.");
-        }
-        // ゲームパッド追加時イベント処理を追加
-        Gamepad.GamepadAdded += Gamepad_GamepadAdded;
+        
 #endif
 
             NowGear = 1;
