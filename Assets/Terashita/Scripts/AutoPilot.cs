@@ -20,7 +20,6 @@ namespace KTB
         [SerializeField]
         float SpeedMagnitude = 4.0f;
 
-
         float Distance;
 
         Vector3 CursorPos;
@@ -47,10 +46,8 @@ namespace KTB
         {
             bool autoPilot = false;
 #if WINDOWS_UWP
-            if(controller != null)
-            {
-                reading = gami.PlayerMover.reading;
-            }
+            reading = gami.PlayerMover.reading;
+
             if(reading.Buttons.HasFlag(GamepadButtons.X)&&CanAutoPilot())autoPilot = true;
 #else
             if (Input.GetButtonDown("AutoPilot") && CanAutoPilot()) { autoPilot = true; }

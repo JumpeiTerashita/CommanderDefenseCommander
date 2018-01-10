@@ -12,10 +12,16 @@ namespace gami
             null
         };
         static GameObject[] obj;
+
+        [SerializeField]
+        GameObject boidsController;
+        static GameObject boidsCtr;
+
         private void Awake()
         {
             obj = openingObj;
             thisObj = this.gameObject;
+            boidsCtr = boidsController;
         }
         public static void DestroyOpeningObjects()
         {
@@ -27,11 +33,12 @@ namespace gami
             Destroy(thisObj);
         }
         
-        public static void CreateTimer()
+        public static void CreateGameSceneObj()
         {
             GameObject obj = (GameObject)Resources.Load("TimeManager");
             obj = Instantiate(obj);
             obj.AddComponent<ResultSceneLoader>();
+            Instantiate(boidsCtr);
         }
     }
 }

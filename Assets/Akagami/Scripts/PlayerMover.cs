@@ -13,7 +13,6 @@ namespace gami
 //#endif
     public class PlayerMover : MonoBehaviour
     {
-        public static int aho;
 #if WINDOWS_UWP
         public static Gamepad controller;
         public static GamepadReading reading;
@@ -44,7 +43,7 @@ namespace gami
         // 現在のギア
         private int NowGear;
         // コントローラー受付フラグ
-        public bool isControll = false;
+        bool isControll = true;
 
         private void Start()
         {
@@ -89,7 +88,6 @@ namespace gami
             xStick = Input.GetAxis("Player_Roll");
             trigger = Input.GetAxis("Player_Yaw");
 #endif
-
             // YawPitchRollの入力によって
             // 現在の姿勢から値を変更していく
             if (yStick != 0)
@@ -108,6 +106,7 @@ namespace gami
             {
                 this.transform.rotation *=
                     Quaternion.AngleAxis(-trigger, new Vector3(0, 1, 0));
+               
             }
         }
         void GearChangeAction()

@@ -31,10 +31,8 @@ namespace gami
         {
 
 #if WINDOWS_UWP
-            if(gami.PlayerMover.controller != null)
-            {
-                reading = gami.PlayerMover.reading;
-            }
+            reading = gami.PlayerMover.reading;
+            
       
             if(reading.Buttons.HasFlag(GamepadButtons.X)){autoFlag = true;}
 #else
@@ -60,7 +58,7 @@ namespace gami
                 // オブジェクト削除
                 gami.OpeningSceneManager.DestroyOpeningObjects();
                     // タイマー作動
-                gami.OpeningSceneManager.CreateTimer();
+                gami.OpeningSceneManager.CreateGameSceneObj();
                 //}
                
                 // コントローラーの受付開始
