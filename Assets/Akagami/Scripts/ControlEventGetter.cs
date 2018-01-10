@@ -10,7 +10,7 @@ using Windows.Gaming.Input;
     {
         public Gamepad controller;
         public GamepadReading reading;
-        public static GamepadReading oldButton;
+        //public static GamepadReading oldButton;
 
         // Use this for initialization
         void Start()
@@ -32,11 +32,11 @@ using Windows.Gaming.Input;
         {
             if(controller != null)
             {
-                oldButton = reading;
+                //oldButton = reading;
                 reading = controller.GetCurrentReading();
             }
         }
-    // ゲームパッド追加時のイベント処理
+        // ゲームパッド追加時のイベント処理
         private void Gamepad_GamepadAdded(object sender, Gamepad e)
         {
             controller = e;

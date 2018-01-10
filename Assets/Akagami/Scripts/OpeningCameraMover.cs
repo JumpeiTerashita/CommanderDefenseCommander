@@ -18,7 +18,6 @@ namespace gami
         [SerializeField]
         float PLAYER_ROTATE_ANGLE = .5f;
 #if WINDOWS_UWP
-        public Gamepad controller;
         public GamepadReading reading;
 #endif
         private bool autoFlag = false;
@@ -31,9 +30,9 @@ namespace gami
         {
 
 #if WINDOWS_UWP
-            reading = gami.PlayerMover.reading;
+            reading = 
+            ControlEventGetter.Instance.reading;;
             
-      
             if(reading.Buttons.HasFlag(GamepadButtons.X)){autoFlag = true;}
 #else
             if (Input.GetButtonDown("AutoPilot")) autoFlag = true;

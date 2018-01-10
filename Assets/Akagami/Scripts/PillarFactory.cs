@@ -9,7 +9,6 @@ namespace gami
     public class PillarFactory : MonoBehaviour
     {
 #if WINDOWS_UWP
-        public Gamepad controller;
         public GamepadReading reading;
 #endif
 
@@ -53,7 +52,8 @@ namespace gami
             // Yボタン入力でフラグを管理
             bool sideChange = false;
 #if WINDOWS_UWP
-            reading = gami.PlayerMover.reading;
+            reading = 
+            ControlEventGetter.Instance.reading;
             if(reading.Buttons.HasFlag(GamepadButtons.Y))
             {
                 sideChange = true;
