@@ -2,20 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pillar : MonoBehaviour {
+public class Pillar : MonoBehaviour
+{
+    [SerializeField]
+    GameObject Camera;
+
+    float Timer = 0;
 
     // gami追加
     bool isSideUnder = false;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void Update()
+    {
+        Timer++;
+        if (Timer >= 200)
+        {
+            Timer = 0;
+            transform.LookAt(new Vector3 (Camera.transform.position.x,transform.position.y,Camera.transform.position.z));
+        }
+    }
+
     public void SetSideUnderFlag(bool _flag)
     {
         isSideUnder = _flag;

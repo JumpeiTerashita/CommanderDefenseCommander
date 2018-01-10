@@ -39,6 +39,9 @@ namespace KTB
         [SerializeField]
         GameObject Pillar;
 
+        [SerializeField]
+        GameObject Camera;
+
         /// <summary>
         /// 使うの下端か
         /// </summary>
@@ -89,7 +92,7 @@ namespace KTB
 
             Vector3 PlayerPos = Player.transform.position;
             GameObject InstPillar = Instantiate(Pillar);
-
+            
             //  柱の長さセット
             // Player.y - PillarLimit
             // 例 Player.y = 3 , PillarLimit = -5 のとき
@@ -99,8 +102,9 @@ namespace KTB
             //  柱の位置セット
             // 長さ÷2 中点にy座標をおく
             InstPillar.transform.position = new Vector3(PlayerPos.x, PlayerPos.y - (PlayerPos.y - PillarLimit) / 2, PlayerPos.z);
-
+            
             InstPillar.transform.SetParent(this.gameObject.transform);
+            
             InstPillar.GetComponent<AutoDestroy>().SetDestroyLimit(EveryPillarLifeLimit);
         }
     }
