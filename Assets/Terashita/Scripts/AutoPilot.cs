@@ -37,7 +37,7 @@ namespace KTB
 #if WINDOWS_UWP
 
             reading = 
-            ControlEventGetter.Instance.reading;
+            gami.ControlEventGetter.Instance.reading;
             if(reading.Buttons.HasFlag(GamepadButtons.X)&&CanAutoPilot())autoPilot = true;
 #else
             if (Input.GetButtonDown("AutoPilot") && CanAutoPilot()) { autoPilot = true; }

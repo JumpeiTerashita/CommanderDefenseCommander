@@ -57,9 +57,7 @@ namespace gami
             float xStick = 0;
             float trigger = 0;
 #if WINDOWS_UWP
-        if(controller != null)
-        {
-
+       
             // ゲームパッドの現在の状態を取得する
             xStick = (float)reading.LeftThumbstickX;
             yStick = (float)reading.LeftThumbstickY * -1;
@@ -68,7 +66,6 @@ namespace gami
             if((yStick<=0.1f)&&(yStick>=-0.1f))yStick=0;
             trigger += (float)reading.LeftTrigger;
             trigger -= (float)reading.RightTrigger;
-        }
 #else
             // Stick、Triggerに入力があれば値を保持
             yStick = Input.GetAxis("Player_Pitch");
@@ -103,19 +100,16 @@ namespace gami
             bool gearDown = false;
 
 #if WINDOWS_UWP
-            // ボタンが押されているかつ前回の入力と異なればFlagをtrueに
-            if(controller != null)
+          
+            if(reading.Buttons.HasFlag(GamepadButtons.RightShoulder)&&
+            (reading.Buttons.HasFlag(GamepadButtons.RightShoulder)!=oldButton.Buttons.HasFlag(GamepadButtons.RightShoulder)))
             {
-                if(reading.Buttons.HasFlag(GamepadButtons.RightShoulder)&&
-                (reading.Buttons.HasFlag(GamepadButtons.RightShoulder)!=oldButton.Buttons.HasFlag(GamepadButtons.RightShoulder)))
-                {
-                    gearUp = true;
-                }
-                if(reading.Buttons.HasFlag(GamepadButtons.LeftShoulder)&&
-                reading.Buttons.HasFlag(GamepadButtons.LeftShoulder)!=oldButton.Buttons.HasFlag(GamepadButtons.LeftShoulder))
-                {
-                    gearDown = true;
-                }
+                gearUp = true;
+            }
+            if(reading.Buttons.HasFlag(GamepadButtons.LeftShoulder)&&
+            reading.Buttons.HasFlag(GamepadButtons.LeftShoulder)!=oldButton.Buttons.HasFlag(GamepadButtons.LeftShoulder))
+            {
+                gearDown = true;
             }
 #else
             if (Input.GetButtonDown("GearUp")) gearUp = true;
@@ -136,10 +130,9 @@ namespace gami
             bool brake = false;
             // Aボタン！！！！！！
 #if WINDOWS_UWP
-            if(controller != null)
-            {
-                if(reading.Buttons.HasFlag(GamepadButtons.A))brake = true;
-            }
+           
+              if(reading.Buttons.HasFlag(GamepadButtons.A))brake = true;
+           
 #else
             if (Input.GetButton("Brake"))
             {
@@ -167,11 +160,10 @@ namespace gami
         void Update()
         {
 #if WINDOWS_UWP
-            if(controller != null)
-            {
-                oldButton = reading;
-                reading = ControlEventGetter.Instance.reading;
-            }
+       
+            oldButton = reading;
+            reading = ControlEventGetter.Instance.reading;
+        
 #endif
             if (!IsAutoPilot)
             {
