@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Pillar : MonoBehaviour
 {
-    [SerializeField]
-    GameObject Camera;
+    public GameObject Camera;
 
     float Timer = 0;
 
@@ -53,7 +52,7 @@ public class Pillar : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         
-            Debug.Log("HIT");
+            //Debug.Log("HIT");
             other.gameObject.SendMessage("Destroy");
             //Destroy();
         

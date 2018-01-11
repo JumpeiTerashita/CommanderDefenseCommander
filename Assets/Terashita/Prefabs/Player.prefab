@@ -2113,7 +2113,6 @@ MonoBehaviour:
   - 0.05
   - 0.1
   accel: 0.00025
-  isControll: 1
 --- !u!114 &114617204821516912
 MonoBehaviour:
   m_ObjectHideFlags: 1

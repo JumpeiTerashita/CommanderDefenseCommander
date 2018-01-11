@@ -12,7 +12,8 @@ namespace KTB
     /// </summary>
     public class RandomChaseTarget : MonoBehaviour
     {
-        
+        GameObject Player;
+
         [SerializeField]
         float ChangeSpan = 5.0f;
 
@@ -27,6 +28,7 @@ namespace KTB
         // Use this for initialization
         void Start()
         {
+            Player = GameObject.Find("Player");
             TargetPosition = transform.position;
         }
 
@@ -45,7 +47,11 @@ namespace KTB
             isRunning = true;
             //  Debug.Log("I'm Running");
 
-            TargetPosition = new Vector3(Random.Range(-RandomLimit, RandomLimit), Random.Range(-RandomLimit, RandomLimit), Random.Range(-RandomLimit, RandomLimit));
+            TargetPosition = new Vector3(
+                Player.transform.position.x + Random.Range(-RandomLimit, RandomLimit),
+                Player.transform.position.y + Random.Range(-RandomLimit, RandomLimit),
+                Player.transform.position.z + Random.Range(-RandomLimit, RandomLimit)
+                );
             transform.position = TargetPosition;
 
             yield return new WaitForSeconds(ChangeSpan);

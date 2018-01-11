@@ -21,6 +21,9 @@ namespace KTB
 
         public GameObject BoidsController;
 
+        [SerializeField]
+        int destroyScore = 1;
+
         // Use this for initialization
         void Start()
         {
@@ -55,7 +58,8 @@ namespace KTB
             if (!IsDead)
             {
                 IsDead = true;
-
+                this.GetComponent<Rigidbody>().detectCollisions = false;
+                InGameManager.Instance.Score.Value += destroyScore;
                 StartCoroutine(ExplosionPhase());
             }
         }
