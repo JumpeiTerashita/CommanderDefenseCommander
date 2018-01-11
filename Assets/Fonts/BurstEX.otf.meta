@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 37fa153f0fae53b4caccb36265bbe4e0
+timeCreated: 1515651166
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: BurstEX
+  fontNames:
+  - BurstEX
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
