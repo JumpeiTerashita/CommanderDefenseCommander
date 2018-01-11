@@ -104,8 +104,10 @@ namespace KTB
             InstPillar.transform.position = new Vector3(PlayerPos.x, PlayerPos.y - (PlayerPos.y - PillarLimit) / 2, PlayerPos.z);
             
             InstPillar.transform.SetParent(this.gameObject.transform);
-            
             InstPillar.GetComponent<AutoDestroy>().SetDestroyLimit(EveryPillarLifeLimit);
+
+            // TODO : ゲームスタート前は別のカメラに
+            InstPillar.GetComponent<Pillar>().Camera = Camera;
         }
     }
 }
