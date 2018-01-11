@@ -234,7 +234,7 @@ PlayerSettings:
   - m_BuildTarget: Metro
     m_Enabled: 1
     m_Devices:
-    - WindowsMR
+    - HoloLens
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   webPlayerTemplate: APPLICATION:Default
@@ -517,7 +517,8 @@ PlayerSettings:
   incrementalIl2cppBuild: {}
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 0
-  apiCompatibilityLevelPerPlatform: {}
+  apiCompatibilityLevelPerPlatform:
+    Metro: 2
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: ShooterCommander
