@@ -5,7 +5,6 @@ namespace gami
 {
     public class Timer : MonoBehaviour
     {
-
         [SerializeField]
         public float limitTime = 60;
         public float timeCount = 0;

@@ -7,6 +7,8 @@ namespace KTB
 {
     public class InGameManager : SingleTon<InGameManager>
     {
+        public GameObject inGameManager;
+
         public ReactiveProperty<int> Score = new ReactiveProperty<int>();
 
         void Start()
@@ -16,6 +18,7 @@ namespace KTB
             Score.Subscribe(score=> {
                 Debug.Log("Now Score = "+score);
             });
+            inGameManager = this.gameObject;
         }
 
         void Refresh()
