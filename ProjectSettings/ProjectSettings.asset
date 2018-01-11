@@ -629,8 +629,8 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 4ea1cddc-b363-4e2b-b0ed-3fce45074260
-  projectName: ShooterCommander
+  cloudProjectId: b6f5bef0-952e-484b-9462-a52b93763c94
+  projectName: ShooterCommander (1)
   organizationId: purupuru
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
