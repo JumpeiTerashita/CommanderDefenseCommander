@@ -9,12 +9,18 @@ namespace KTB
     {
         public ReactiveProperty<int> Score = new ReactiveProperty<int>();
 
-         void Start()
+        void Start()
         {
+            DontDestroyOnLoad(this.gameObject);
             Debug.Log("InGameManager Initialized");
             Score.Subscribe(score=> {
                 Debug.Log("Now Score = "+score);
             });
+        }
+
+        void Refresh()
+        {
+            Score.Value = 0;
         }
     }
 }
