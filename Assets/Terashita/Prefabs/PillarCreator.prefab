@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4717038123036388}
   - component: {fileID: 114423500493889586}
+  - component: {fileID: 114111248640960970}
+  - component: {fileID: 114871850471133024}
   m_Layer: 0
   m_Name: PillarCreator
   m_TagString: Untagged
@@ -40,13 +42,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114423500493889586
+--- !u!114 &114111248640960970
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1335537871273790}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7fc54d8aa01154c8c99292d8006a28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio: {fileID: 0}
+  scaleMag: 0.1
+--- !u!114 &114423500493889586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1335537871273790}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27aed1a5d504fcf4d8692e4266fd1f18, type: 3}
   m_Name: 
@@ -56,3 +71,18 @@ MonoBehaviour:
   PillarUnderLimit: -5
   Pillar: {fileID: 1303580699146738, guid: ac41b9dc0593f0c4d92619ef404faf6a, type: 2}
   Camera: {fileID: 0}
+--- !u!114 &114871850471133024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1335537871273790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b27b61055fa1b45a4e0b6f2484dc6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  everyPillarLifeLimit: 5
+  pillarHeightParamt: 2
+  pillar: {fileID: 1303580699146738, guid: ac41b9dc0593f0c4d92619ef404faf6a, type: 2}
+  camera: {fileID: 0}

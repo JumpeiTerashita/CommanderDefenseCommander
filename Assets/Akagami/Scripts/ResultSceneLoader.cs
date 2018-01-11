@@ -7,14 +7,14 @@ namespace gami
     public class ResultSceneLoader : MonoBehaviour
     {
 
-
         // Update is called once per frame
         void Update()
         {
             if (this.GetComponent<gami.Timer>().GetTime() <= 0)
             {
+                Debug.Log(" # TIME OVER # ");
                 //SceneManager.LoadScene("");
-                Debug.Log(1);
+                SceneManager.LoadScene("Result");
             }
         }
     }

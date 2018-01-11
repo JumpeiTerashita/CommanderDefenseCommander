@@ -27,6 +27,9 @@ namespace gami
         [SerializeField]
         GameObject pillar;
 
+
+        GameObject OpeningSceneManager;
+
         /// <summary>
         /// 放出方向
         /// </summary>
@@ -37,11 +40,13 @@ namespace gami
         private void Awake()
         {
             player = GameObject.Find("Player");
+            OpeningSceneManager = GameObject.Find("OpeningSceneManager");
         }
 
         // Use this for initialization
         void Start()
         {
+           
             isSideUnder = false;
         }
 
@@ -88,6 +93,8 @@ namespace gami
             instPillar.transform.SetParent(this.gameObject.transform);
             // 死に時間設定
             instPillar.GetComponent<KTB.AutoDestroy>().SetDestroyLimit(everyPillarLifeLimit);
+            // カメラの参照をPillarに！ by KTB
+            instPillar.GetComponent<Pillar>().Camera = OpeningSceneManager.GetComponent<gami.OpeningCameraMover>().mainCamera;
         }
     }
 }

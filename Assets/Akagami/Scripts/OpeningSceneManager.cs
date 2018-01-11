@@ -17,6 +17,12 @@ namespace gami
         GameObject boidsController;
         static GameObject boidsCtr;
 
+        /// <summary>
+        /// 生成する群れの数 by KTB
+        /// </summary>
+        [SerializeField]
+        static int BoidsNumber = 3;
+
         private void Awake()
         {
             obj = openingObj;
@@ -38,7 +44,11 @@ namespace gami
             GameObject obj = (GameObject)Resources.Load("TimeManager");
             obj = Instantiate(obj);
             obj.AddComponent<ResultSceneLoader>();
-            Instantiate(boidsCtr);
+
+            for (int i = 0; i < BoidsNumber; i++)
+            {
+                Instantiate(boidsCtr);
+            }
         }
     }
 }
