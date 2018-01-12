@@ -42,5 +42,17 @@ using Windows.Gaming.Input;
             controller = e;
         }
     }
+#else
+
+    public class ControlEventGetter : SingleTon<ControlEventGetter>
+    {
+        
+        // Update is called once per frame
+        void Update()
+        {
+            Debug.Log("t3st");
+        }
+       
+    }
 #endif
 }

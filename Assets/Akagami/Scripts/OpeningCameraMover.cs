@@ -17,6 +17,8 @@ namespace gami
         float LENGTH = 2;
         [SerializeField]
         float PLAYER_ROTATE_ANGLE = .5f;
+        [SerializeField]
+        GameObject controller;
 #if WINDOWS_UWP
         public GamepadReading reading;
 #endif
@@ -24,6 +26,7 @@ namespace gami
         private void Start()
         {
             mainCamera.transform.parent = player.transform;
+            DontDestroyOnLoad(controller);
         }
         // Update is called once per frame
         void Update()
