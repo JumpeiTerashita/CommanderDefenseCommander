@@ -62,32 +62,22 @@ namespace KTB
         //GameObject[] BoidsChildren;
 
         bool IsStarted;
-        
 
         //protected override void Init()
         void Start()
         {
+            StartCoroutine(InstanciatePhase());
             StartCoroutine(StandByPhase());
             //base.Init();
-            for (int i = 0; i < this.MaxChild; i++)
-            {
-                GameObject Child = GameObject.Instantiate(BoidsChild) as GameObject;
-                BoidsChildren.Add(i,Child);
-                Child.transform.SetParent(this.transform);
-                Child.GetComponent<EnemyMover>().Id = i;
-                Child.GetComponent<EnemyMover>().BoidsController = this.gameObject;
-                Child.transform.position
-                    = new Vector3(Random.Range(-InstDispersion, InstDispersion),
-                                  Random.Range(-InstDispersion, InstDispersion),
-                                  //this.BoidsChild.transform.position.y,
-                                  Random.Range(-InstDispersion, InstDispersion));
-            }
+           
         }
 
         // Update is called once per frame
         void Update()
         {
             if (!IsStarted) return;
+
+            
 
             foreach (GameObject child in this.BoidsChildren.Values)
             {
@@ -99,11 +89,7 @@ namespace KTB
             }
             //各個体の座標から、群れの中央の座標を求めます。
             Vector3 center = Vector3.zero;
-            if (BoidsChildren.Count == 0)
-            {
-                Destroy();
-                return;
-            }
+            
 
             foreach (GameObject child in this.BoidsChildren.Values)
             {
@@ -232,6 +218,28 @@ namespace KTB
             float DestroyTime = BoidsChild.GetComponent<EnemyMover>().InstEffect.GetComponent<AutoDestroy>().GetDestroyLimit();
             yield return new WaitForSeconds(DestroyTime);
             IsStarted = true;
+            yield break;
+        }
+
+        IEnumerator InstanciatePhase()
+        {
+            yield return new WaitForSeconds(1.5f);
+            if (BoidsChildren.Count < MaxChild)
+            {
+                GameObject Child = Instantiate(BoidsChild);
+                var EnemyMover = Child.GetComponent<EnemyMover>();
+                BoidsChildren.Add(BoidsChildren.Count, Child);
+                Child.transform.SetParent(transform);
+                EnemyMover.Id = BoidsChildren.Count;
+                EnemyMover.BoidsController = gameObject;
+                Child.transform.position
+                    = new Vector3(Random.Range(-InstDispersion, InstDispersion),
+                                  Random.Range(-InstDispersion, InstDispersion),
+                                  //this.BoidsChild.transform.position.y,
+                                  Random.Range(-InstDispersion, InstDispersion));
+               
+            }
+            StartCoroutine(InstanciatePhase());
             yield break;
         }
 
