@@ -173,6 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000011792100794}
   - component: {fileID: 114611684728110934}
+  - component: {fileID: 114076778461700786}
   m_Layer: 2
   m_Name: DefaultCursor
   m_TagString: Untagged
@@ -584,6 +585,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114076778461700786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012072213228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 064ab22bdb2e6544eae1a0d336bc8b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114611684728110934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -605,6 +617,34 @@ MonoBehaviour:
   RotationLerpTime: 0.01
   LookRotationBlend: 0
   PrimaryCursorVisual: {fileID: 4000014090385390}
+  EnableStateData:
+    Name: 
+    CursorState: 0
+    Parameter:
+      Type: 0
+      DefaultInt: 0
+      DefaultFloat: 0
+      DefaultBool: 0
+      Name: 
+    AnimInputType: 0
+    AnimParameterName: 
+    AnimBoolValue: 0
+    AnimIntValue: 0
+    AnimFloatValue: 0
+  DisableStateData:
+    Name: 
+    CursorState: 0
+    Parameter:
+      Type: 0
+      DefaultInt: 0
+      DefaultFloat: 0
+      DefaultBool: 0
+      Name: 
+    AnimInputType: 0
+    AnimParameterName: 
+    AnimBoolValue: 0
+    AnimIntValue: 0
+    AnimFloatValue: 0
   CursorStateData:
   - Name: Observe
     CursorState: 0
