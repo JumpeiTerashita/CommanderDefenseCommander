@@ -50,7 +50,7 @@ using Windows.Gaming.Input;
         // Update is called once per frame
         void Update()
         {
-            Debug.Log("t3st");
+            //Debug.Log("t3st");
         }
        
     }

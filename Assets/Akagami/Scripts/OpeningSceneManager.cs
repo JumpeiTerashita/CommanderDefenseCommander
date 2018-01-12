@@ -20,8 +20,8 @@ namespace gami
         /// <summary>
         /// 生成する群れの数 by KTB
         /// </summary>
-        [SerializeField]
-        static int BoidsNumber = 3;
+        //[SerializeField]
+        //int BoidsNumber = 3;
 
         private void Awake()
         {
@@ -45,7 +45,7 @@ namespace gami
             obj = Instantiate(obj);
             obj.AddComponent<ResultSceneLoader>();
 
-            for (int i = 0; i < BoidsNumber; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Instantiate(boidsCtr);
             }
