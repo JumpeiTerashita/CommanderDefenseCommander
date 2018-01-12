@@ -13,12 +13,12 @@ public class Pillar : MonoBehaviour
 
     private void Update()
     {
-        Timer++;
-        if (Timer >= 200)
-        {
-            Timer = 0;
-            transform.LookAt(new Vector3 (Camera.transform.position.x,transform.position.y,Camera.transform.position.z));
-        }
+        //Timer++;
+        //if (Timer >= 200)
+        //{
+        //    Timer = 0;
+        //    transform.LookAt(new Vector3 (Camera.transform.position.x,transform.position.y,Camera.transform.position.z));
+        //}
     }
 
     public void SetSideUnderFlag(bool _flag)
