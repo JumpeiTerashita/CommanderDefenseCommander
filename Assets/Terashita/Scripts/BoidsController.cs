@@ -30,8 +30,8 @@ namespace KTB
         /// <summary>
         /// 群れにする個体
         /// </summary>
-        [SerializeField]
-        GameObject BoidsChild;
+        [System.NonSerialized]
+        public GameObject BoidsChild;
 
         /// <summary>
         /// 群れの中央部
@@ -63,20 +63,41 @@ namespace KTB
 
         bool IsStarted;
 
+        private void Awake()
+        {
+            BoidsChild = PrefabHolder.Instance.Enemy;
+        }
+
         //protected override void Init()
         void Start()
         {
-            StartCoroutine(InstanciatePhase());
+            
+            for (int i = 0; i <= MaxChild; i++)
+            {
+                GameObject Child = Instantiate(BoidsChild);
+                var EnemyMover = Child.GetComponent<EnemyMover>();
+                BoidsChildren.Add(i, Child);
+                Child.transform.SetParent(transform);
+                EnemyMover.Id = i;
+                EnemyMover.BoidsController = gameObject;
+                Child.transform.position
+                    = new Vector3(Random.Range(-InstDispersion, InstDispersion),
+                                  Random.Range(-InstDispersion, InstDispersion),
+                                  //this.BoidsChild.transform.position.y,
+                                  Random.Range(-InstDispersion, InstDispersion));
+                
+            }
+
             StartCoroutine(StandByPhase());
+            //StartCoroutine(StandByPhase());
             //base.Init();
-           
         }
 
         // Update is called once per frame
         void Update()
         {
             if (!IsStarted) return;
-
+            if (BoidsChildren.Count == 0) return;
             
 
             foreach (GameObject child in this.BoidsChildren.Values)
@@ -215,7 +236,7 @@ namespace KTB
 
         IEnumerator StandByPhase()
         {
-            float DestroyTime = BoidsChild.GetComponent<EnemyMover>().InstEffect.GetComponent<AutoDestroy>().GetDestroyLimit();
+            float DestroyTime = PrefabHolder.Instance.Inst.GetComponent<AutoDestroy>().GetDestroyLimit();
             yield return new WaitForSeconds(DestroyTime);
             IsStarted = true;
             yield break;
@@ -223,23 +244,9 @@ namespace KTB
 
         IEnumerator InstanciatePhase()
         {
-            yield return new WaitForSeconds(1.5f);
-            if (BoidsChildren.Count < MaxChild)
-            {
-                GameObject Child = Instantiate(BoidsChild);
-                var EnemyMover = Child.GetComponent<EnemyMover>();
-                BoidsChildren.Add(BoidsChildren.Count, Child);
-                Child.transform.SetParent(transform);
-                EnemyMover.Id = BoidsChildren.Count;
-                EnemyMover.BoidsController = gameObject;
-                Child.transform.position
-                    = new Vector3(Random.Range(-InstDispersion, InstDispersion),
-                                  Random.Range(-InstDispersion, InstDispersion),
-                                  //this.BoidsChild.transform.position.y,
-                                  Random.Range(-InstDispersion, InstDispersion));
-               
-            }
-            StartCoroutine(InstanciatePhase());
+            yield return new WaitForSeconds(Random.Range(-2.0f, 2.0f));
+
+           
             yield break;
         }
 

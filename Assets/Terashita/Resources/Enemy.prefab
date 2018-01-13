@@ -2082,21 +2082,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3f7240a63dd4b4c9531fb1709ef22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InstEffect: {fileID: 1453553601546830, guid: ca5b7c5a6a8b0a245b8def67da6ab9f0, type: 2}
-  Explosion:
-  - {fileID: 1125660824912606, guid: 503ca1bbe0b805f4799448804b2b5eba, type: 2}
-  - {fileID: 1353848791378326, guid: 84dfe088c8225814996173d7217f0b82, type: 2}
-  - {fileID: 1028623033100434, guid: 2f664fbd0bd223c4894b6d5bc25c8350, type: 2}
-  - {fileID: 1134289487101824, guid: 3293bf85d2b71ae4397118794b143470, type: 2}
-  - {fileID: 1669597948836028, guid: 3ab82275e5b471b4591096145afd152c, type: 2}
-  - {fileID: 1567375573218200, guid: 0a1c5998a1c7ffe468fd72508d80db6a, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   Speed: 0.01
   Id: 0
   BoidsController: {fileID: 0}
+  destroyScore: 1
 --- !u!114 &114440118730263498
 MonoBehaviour:
   m_ObjectHideFlags: 1

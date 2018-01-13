@@ -39,23 +39,27 @@ namespace gami
 
         private GameObject player;
 
+        bool IsStarted;
+
         private void Awake()
         {
             player = GameObject.Find("Player");
             OpeningSceneManager = GameObject.Find("OpeningSceneManager");
+            IsStarted = false;
         }
 
         // Use this for initialization
         void Start()
-        {
-           
+        { 
             isSideUnder = false;
+            StartCoroutine(StandByPhase());
         }
 
 
         // Update is called once per frame
         void Update()
         {
+            if (!IsStarted) return;
             // Yボタン入力でフラグを管理
             bool sideChange = false;
 #if WINDOWS_UWP
@@ -100,6 +104,13 @@ namespace gami
             instPillar.transform.eulerAngles += new Vector3(0, camera.transform.eulerAngles.y, 0);
             // カメラの参照をPillarに！ by KTB
             //instPillar.GetComponent<Pillar>().Camera = OpeningSceneManager.GetComponent<gami.OpeningCameraMover>().mainCamera;
+        }
+
+        IEnumerator StandByPhase()
+        {
+            //pillar = KTB.PrefabHolder.Instance.Pillar;
+            yield return null;
+            IsStarted = true;
         }
     }
 }
