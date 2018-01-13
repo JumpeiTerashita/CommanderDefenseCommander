@@ -19,6 +19,11 @@ namespace gami
         float PLAYER_ROTATE_ANGLE = .5f;
         [SerializeField]
         GameObject controller;
+        /// <summary>
+        /// 生成する群れの数 by KTB
+        /// </summary>
+        [SerializeField]
+        int BoidsNumber = 3;
 #if WINDOWS_UWP
         public GamepadReading reading;
 #endif
@@ -60,7 +65,7 @@ namespace gami
                 // オブジェクト削除
                 gami.OpeningSceneManager.DestroyOpeningObjects();
                     // タイマー作動
-                gami.OpeningSceneManager.CreateGameSceneObj();
+                gami.OpeningSceneManager.CreateGameSceneObj(BoidsNumber);
                 //}
                
                 // コントローラーの受付開始

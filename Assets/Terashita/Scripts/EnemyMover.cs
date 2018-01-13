@@ -6,11 +6,8 @@ namespace KTB
 {
     public class EnemyMover : MonoBehaviour
     {
-        [SerializeField]
+        [System.NonSerialized]
         public GameObject InstEffect;
-
-        [SerializeField]
-        public GameObject[] Explosion = new GameObject[10];
 
         [SerializeField]
         float Speed = 0.01f;
@@ -24,11 +21,16 @@ namespace KTB
         [SerializeField]
         int destroyScore = 1;
 
+        private void Awake()
+        {
+            InstEffect = PrefabHolder.Instance.Inst;
+           
+        }
+
         // Use this for initialization
         void Start()
         {
-            var EnemyInst = Instantiate(InstEffect);
-            EnemyInst.transform.position = transform.position;
+            StartCoroutine(InstPhase());
             //GetComponent<DestinationHolder>().SetDestination();
         }
 
@@ -64,16 +66,28 @@ namespace KTB
             }
         }
 
+        IEnumerator InstPhase()
+        {
+            yield return null;
+            var EnemyInst = Instantiate(InstEffect);
+            EnemyInst.transform.position = transform.position;
+            yield break;
+        }
+
         IEnumerator ExplosionPhase()
         {
             int RandomNum = Random.Range(0,5);
-            var Explode = Instantiate(Explosion[RandomNum]);
+            var Explosion = PrefabHolder.Instance.Explode[RandomNum];
+            yield return null;
+            var Explode = Instantiate(Explosion);
            
             Explode.transform.position = transform.position;
             Explode.transform.SetParent(this.gameObject.transform);
             Explode.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 
-            float ExplodeTime = Explosion[0].GetComponent<AutoDestroy>().GetDestroyLimit();
+            float ExplodeTime = Explosion.GetComponent<AutoDestroy>().GetDestroyLimit();
+            yield return null;
+
             yield return new WaitForSeconds(ExplodeTime);
             Debug.Log("Destroy -- Enemy " + Id);
             BoidsController.SendMessage("Delete", Id);
