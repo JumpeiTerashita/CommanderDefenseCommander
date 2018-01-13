@@ -12,7 +12,10 @@ namespace gami
             null
         };
         static GameObject[] obj;
-
+        [SerializeField]
+        Camera mainCamera;
+        [SerializeField]
+        GameObject light;
         [SerializeField]
         GameObject boidsController;
         static GameObject boidsCtr;
@@ -22,6 +25,12 @@ namespace gami
         /// </summary>
         //[SerializeField]
         //int BoidsNumber = 3;
+
+        private void Start()
+        {
+            if (light == null || mainCamera == null) return;
+            light.transform.parent = mainCamera.transform;
+        }
 
         private void Awake()
         {

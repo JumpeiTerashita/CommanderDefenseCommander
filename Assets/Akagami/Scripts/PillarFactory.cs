@@ -27,6 +27,8 @@ namespace gami
         [SerializeField]
         GameObject pillar;
 
+        [SerializeField]
+        Camera camera;
 
         GameObject OpeningSceneManager;
 
@@ -93,8 +95,11 @@ namespace gami
             instPillar.transform.SetParent(this.gameObject.transform);
             // 死に時間設定
             instPillar.GetComponent<KTB.AutoDestroy>().SetDestroyLimit(everyPillarLifeLimit);
+            // カメラの方向に向きを合わせるを向かせる
+            if (camera == null) return;
+            instPillar.transform.eulerAngles += new Vector3(0, camera.transform.eulerAngles.y, 0);
             // カメラの参照をPillarに！ by KTB
-            instPillar.GetComponent<Pillar>().Camera = OpeningSceneManager.GetComponent<gami.OpeningCameraMover>().mainCamera;
+            //instPillar.GetComponent<Pillar>().Camera = OpeningSceneManager.GetComponent<gami.OpeningCameraMover>().mainCamera;
         }
     }
 }
