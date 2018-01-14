@@ -7,6 +7,7 @@ namespace KTB
 {
     public class InGameManager : SingleTon<InGameManager>
     {
+        [System.NonSerialized]
         public GameObject inGameManager;
 
         public ReactiveProperty<int> Score = new ReactiveProperty<int>();
