@@ -157,7 +157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ArriveLength: 0.25
   Speed: 0.01
-  cameraObj: {fileID: 0}
 --- !u!114 &114316356114451228
 MonoBehaviour:
   m_ObjectHideFlags: 1

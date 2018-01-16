@@ -52,9 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24b792458b5927418c3d41119ceb18a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 1281579549903538, guid: debf0103d105a6444a563dc13d06cc4d, type: 2}
+  Enemy: {fileID: 1058198017319252, guid: 7e0f5f0354885a2408e86bcfcc5aa690, type: 2}
   SpawnSpan: 5
-  SetBehaviorPattern: 1
 --- !u!135 &135650860718820834
 SphereCollider:
   m_ObjectHideFlags: 1

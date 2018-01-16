@@ -24,7 +24,8 @@ namespace KTB
             GameObject cameraObj = GameObject.Find("MixedRealityCameraParent");
             IsDead = false;
             hasArrived = false;
-            GetComponent<DestinationHolder>().SetDestination(cameraObj.transform.position);
+            GetComponent<DestinationHolder>().SetDestination(new Vector3( cameraObj.transform.position.x,transform.position.y,cameraObj.transform.position.z));
+            //Debug.Log(GetComponent<DestinationHolder>().GetDestination());
         }
 
         // Update is called once per frame
@@ -42,8 +43,6 @@ namespace KTB
 
         void FlyToDestination(float _speedMagnitude = 1.0f, float _turnMagnitude = 1.0f)
         {
-            // TODO : ミサイルのy座標は変えない xzのみでやりたいネ
-
             // 設定した目的地にだんだん向く
             Vector3 TargetPos = GetComponent<DestinationHolder>().GetDestination();
             Quaternion targetRotation = Quaternion.LookRotation(TargetPos - transform.position);
@@ -56,6 +55,7 @@ namespace KTB
             return;
         }
 
+        // FIX : なんかうまくとれない　Colliderでやるべき
         void ArriveCheck()
         {
             var Destination = GetComponent<DestinationHolder>().GetDestination();

@@ -18,7 +18,11 @@ namespace KTB
         [SerializeField]
         float SpawnSpan = 5.0f;
 
-        Vector3 SpawnPoint;
+        [SerializeField]
+        float SpawnRandomTime = 0.5f;
+
+        [SerializeField]
+        float RandomRange = 1.5f;
 
         bool isStarted = false;
         bool isRunning = false;
@@ -27,7 +31,6 @@ namespace KTB
         // Use this for initialization
         void Start()
         {
-            SpawnPoint = transform.position;
             Player = GameObject.Find("Player");
             if (!Player) Destroy(gameObject);
         }
@@ -52,13 +55,18 @@ namespace KTB
             }
             else
             {
+                Vector3 SpawnPoint = new Vector3(
+                    transform.position.x + Random.Range(-RandomRange, RandomRange),
+                    transform.position.y + Random.Range(-RandomRange, RandomRange),
+                    transform.position.z + Random.Range(-RandomRange, RandomRange)
+                    );
                 GameObject SpawnedEnemy = Instantiate(Enemy, SpawnPoint, Quaternion.identity);
                 SpawnedEnemy.transform.LookAt(Player.transform.position);
                 //Debug.Log(Player.transform.position);
                 //Debug.Log(SpawnedEnemy.transform.forward);
             }
 
-            yield return new WaitForSeconds(SpawnSpan);
+            yield return new WaitForSeconds(SpawnSpan+ Random.Range(-SpawnRandomTime, SpawnRandomTime));
 
 
             isRunning = false;
