@@ -158,15 +158,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4681555576980928}
   - component: {fileID: 54011500654215710}
-  - component: {fileID: 114515079290245860}
   - component: {fileID: 137706866501309346}
   - component: {fileID: 136411137147945820}
-  - component: {fileID: 114317826698381186}
   - component: {fileID: 114879445561526284}
   - component: {fileID: 96031310019819986}
   - component: {fileID: 114617204821516912}
   - component: {fileID: 114650721785898600}
   - component: {fileID: 114761341543059888}
+  - component: {fileID: 114793243854963518}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2083,36 +2082,6 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
---- !u!114 &114317826698381186
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1391278109543550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f9a4403e29f13847b677c84fad36ab5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114515079290245860
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1391278109543550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb32a8f51b513254fb1da3ed16f7214b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 0.1
-  GearSpeed:
-  - 0
-  - 0.005
-  - 0.01
-  - 0.05
-  - 0.1
-  accel: 0.00025
 --- !u!114 &114617204821516912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2150,6 +2119,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+--- !u!114 &114793243854963518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1391278109543550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1935f1fb01457ce4e871c0837e401d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0.1
+  accel: 0.001
+  transformYValue: 30
+  mainCamera: {fileID: 0}
+  circleRadius: 1
 --- !u!114 &114879445561526284
 MonoBehaviour:
   m_ObjectHideFlags: 1
