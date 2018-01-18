@@ -116,7 +116,7 @@ namespace gami
             ControllerEvent();
             AccelAction();
             // 移動
-            //TransformPos();
+            TransformPos();
             mainCamera.transform.LookAt(this.transform);
         }
 
