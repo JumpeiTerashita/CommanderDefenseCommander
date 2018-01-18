@@ -15,7 +15,8 @@ namespace KTB
         float Speed = 0.01f;
 
         bool IsDead = false;
-        bool hasArrived;
+
+        public bool IsTutorial; 
 
         private Subject<Collision> onCollision = new Subject<Collision>();
 
@@ -24,7 +25,8 @@ namespace KTB
         {
             GameObject cameraObj = GameObject.Find("MixedRealityCameraParent");
             IsDead = false;
-            hasArrived = false;
+            
+
             GetComponent<DestinationHolder>().SetDestination(new Vector3( cameraObj.transform.position.x,transform.position.y,cameraObj.transform.position.z));
 
             
@@ -39,13 +41,13 @@ namespace KTB
         // Update is called once per frame
         void Update()
         {
-            if (hasArrived) return;
+            if (IsTutorial) return;
 
             // 向いて移動
             FlyToDestination();
 
             // 目的地に到着済みか確認
-            ArriveCheck();
+            //ArriveCheck();
 
         }
 
@@ -64,15 +66,15 @@ namespace KTB
         }
 
         // FIX : なんかうまくとれない　Colliderでやるべき
-        void ArriveCheck()
-        {
-            var Destination = GetComponent<DestinationHolder>().GetDestination();
-            Vector3 Distance = Destination - transform.position;
-            if (MyMath.IsShortLength(Destination, ArriveLength))
-            {
-                hasArrived = true;
-            }
-        }
+        //void ArriveCheck()
+        //{
+        //    var Destination = GetComponent<DestinationHolder>().GetDestination();
+        //    Vector3 Distance = Destination - transform.position;
+        //    if (MyMath.IsShortLength(Destination, ArriveLength))
+        //    {
+        //        hasArrived = true;
+        //    }
+        //}
 
         private void OnCollisionEnter(Collision collision)
         {
