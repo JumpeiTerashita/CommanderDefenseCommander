@@ -10,7 +10,11 @@ namespace KTB
         [System.NonSerialized]
         public GameObject inGameManager;
 
+        [System.NonSerialized]
         public ReactiveProperty<int> Score = new ReactiveProperty<int>();
+
+        [System.NonSerialized]
+        public GameObject[] Missile = new GameObject[4];
 
         void Start()
         {
@@ -20,7 +24,22 @@ namespace KTB
                 Debug.Log("Now Score = "+score);
             });
             inGameManager = this.gameObject;
+
+            SearchMissile();
         }
+
+        void SearchMissile()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                Missile[i] = GameObject.Find("Missile"+i);
+                Debug.Log("Missile " + i + " Found");
+            }
+        }
+
+        //  TODO : TutorialMissileが死んだとき
+        //         InGameManagerのMissile[]をヌルにしよう
+        //         その為にMissleにIdを持たせよう！
 
         void Refresh()
         {
