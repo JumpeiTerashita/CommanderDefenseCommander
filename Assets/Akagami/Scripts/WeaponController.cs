@@ -17,8 +17,10 @@ public class WeaponController : MonoBehaviour {
 	}
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.tag == "enemy")
+        Debug.Log("Hit");
+        if (collision.transform.tag == "Enemy")
         {
+            Debug.Log("Hiiiiit");
             Vector3 hitPos = new Vector3(0,0,0);
             foreach (ContactPoint point in collision.contacts)
             {
@@ -28,7 +30,7 @@ public class WeaponController : MonoBehaviour {
         }
     }
 
-    private void SetScale(Vector3 _pos)
+    public void SetScale(Vector3 _pos)
     {
         if (player == null) return;
         float playerLenge = Mathf.Sqrt(
