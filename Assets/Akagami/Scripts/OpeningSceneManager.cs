@@ -16,8 +16,8 @@ namespace gami
         Camera mainCamera;
         [SerializeField]
         GameObject light;
-        [SerializeField]
-        GameObject boidsController;
+        //[SerializeField]
+        //GameObject boidsController;
         static GameObject boidsCtr;
 
         
@@ -32,7 +32,7 @@ namespace gami
         {
             obj = openingObj;
             thisObj = this.gameObject;
-            boidsCtr = boidsController;
+            //boidsCtr = boidsController;
         }
         public static void DestroyOpeningObjects()
         {
@@ -40,20 +40,19 @@ namespace gami
             {
                 Destroy(e);
             }
-            
             Destroy(thisObj);
         }
         
-        public static void CreateGameSceneObj(int _BoidsNum)
+        public static void CreateGameSceneObj()
         {
             GameObject obj = (GameObject)Resources.Load("TimeManager");
             obj = Instantiate(obj);
             obj.AddComponent<ResultSceneLoader>();
 
-            for (int i = 0; i < _BoidsNum; i++)
-            {
-                Instantiate(boidsCtr);
-            }
+            //for (int i = 0; i < _BoidsNum; i++)
+            //{
+            //    Instantiate(boidsCtr);
+            //}
         }
     }
 }

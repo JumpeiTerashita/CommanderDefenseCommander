@@ -36,7 +36,6 @@ namespace gami
         // Update is called once per frame
         void Update()
         {
-
 #if WINDOWS_UWP
             reading = 
             ControlEventGetter.Instance.reading;;
@@ -53,17 +52,16 @@ namespace gami
                 // オブジェクト削除
                 gami.OpeningSceneManager.DestroyOpeningObjects();
                     // タイマー作動
-                gami.OpeningSceneManager.CreateGameSceneObj(BoidsNumber);
+                gami.OpeningSceneManager.CreateGameSceneObj();
                 //}
-               
+                
                 // コントローラーの受付開始
                 player.GetComponent<gami.PlayerMoveController>().SetControllerFlag(true);
-      
             }
             else
             {
                 //mainCamera.SetActive(false);
-                player.transform.rotation *= Quaternion.AngleAxis(PLAYER_ROTATE_ANGLE, new Vector3(0, 1, 0));
+                //player.transform.rotation *= Quaternion.AngleAxis(PLAYER_ROTATE_ANGLE, new Vector3(0, 1, 0));
                 player.GetComponent<gami.PlayerMoveController>().SetControllerFlag(false);
 
             }
