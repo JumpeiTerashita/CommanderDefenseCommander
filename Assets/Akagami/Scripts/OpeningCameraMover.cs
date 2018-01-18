@@ -49,19 +49,7 @@ namespace gami
             if (autoFlag == true)
             {
                mainCamera.transform.parent = null;
-                // カメラの位置をメインカメラの位置へ移動させていく
-                //Vector3 length = mainCamera.transform.position - this.transform.position;
-                //this.transform.position +=
-                //    length * 0.05f;
-                //this.transform.localEulerAngles +=
-                //    (mainCamera.transform.eulerAngles - this.transform.eulerAngles) * 0.05f;
-
-                //if (Mathf.Sqrt(length.x * length.x +
-                //    length.y * length.y +
-                //    length.z * length.z) <= 1)
-                //{
-                // メインカメラをアクティブ化
-                //mainCamera.SetActive(true);
+          
                 // オブジェクト削除
                 gami.OpeningSceneManager.DestroyOpeningObjects();
                     // タイマー作動
@@ -69,17 +57,15 @@ namespace gami
                 //}
                
                 // コントローラーの受付開始
-                player.GetComponent<gami.PlayerMover>().SetControllerFlag(true);
-                // ギアを1に
-                player.GetComponent<gami.PlayerMover>().SetGear(1);
+                player.GetComponent<gami.PlayerMoveController>().SetControllerFlag(true);
+      
             }
             else
             {
                 //mainCamera.SetActive(false);
                 player.transform.rotation *= Quaternion.AngleAxis(PLAYER_ROTATE_ANGLE, new Vector3(0, 1, 0));
-                player.GetComponent<gami.PlayerMover>().SetControllerFlag(false);
-                player.GetComponent<gami.PlayerMover>().SetGear(3);
-                //SetPos();
+                player.GetComponent<gami.PlayerMoveController>().SetControllerFlag(false);
+
             }
         }
         private void SetPos()
