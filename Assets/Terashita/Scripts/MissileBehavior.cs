@@ -25,15 +25,22 @@ namespace KTB
         {
             GameObject cameraObj = GameObject.Find("MixedRealityCameraParent");
             IsDead = false;
-            
 
             GetComponent<DestinationHolder>().SetDestination(new Vector3( cameraObj.transform.position.x,transform.position.y,cameraObj.transform.position.z));
 
-            
             OnCollision().Subscribe(__ =>
             {
                 Destroy(gameObject);
                 Debug.Log("Missile Break!!");
+                if(__.transform.tag == "Weapon")
+                {
+                    Vector3 hitPos = new Vector3(0, 0, 0);
+                    foreach (ContactPoint point in __.contacts)
+                    {
+                        hitPos = point.point;
+                    }
+                    __.gameObject.GetComponent<gami.WeaponController>().SetScale(hitPos);
+                }
             });
             //Debug.Log(GetComponent<DestinationHolder>().GetDestination());
         }
