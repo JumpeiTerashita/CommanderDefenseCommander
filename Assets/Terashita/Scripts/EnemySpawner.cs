@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 
 namespace KTB
 {
@@ -61,6 +62,9 @@ namespace KTB
                     transform.position.z + Random.Range(-RandomRange, RandomRange)
                     );
                 GameObject SpawnedEnemy = Instantiate(Enemy, SpawnPoint, Quaternion.identity);
+
+                
+
                 SpawnedEnemy.transform.LookAt(Player.transform.position);
                 //Debug.Log(Player.transform.position);
                 //Debug.Log(SpawnedEnemy.transform.forward);

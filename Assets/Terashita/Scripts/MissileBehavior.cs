@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 
 namespace KTB
 {
@@ -16,7 +17,7 @@ namespace KTB
         bool IsDead = false;
         bool hasArrived;
 
-       
+        private Subject<Collision> onCollision = new Subject<Collision>();
 
         // Use this for initialization
         void Start()
@@ -25,6 +26,13 @@ namespace KTB
             IsDead = false;
             hasArrived = false;
             GetComponent<DestinationHolder>().SetDestination(new Vector3( cameraObj.transform.position.x,transform.position.y,cameraObj.transform.position.z));
+
+            
+            OnCollision().Subscribe(__ =>
+            {
+                Destroy(gameObject);
+                Debug.Log("Missile Break!!");
+            });
             //Debug.Log(GetComponent<DestinationHolder>().GetDestination());
         }
 
@@ -66,6 +74,14 @@ namespace KTB
             }
         }
 
-        
+        private void OnCollisionEnter(Collision collision)
+        {
+            onCollision.OnNext(collision);
+        }
+
+        public IObservable<Collision> OnCollision()
+        {
+            return onCollision;
+        }
     }
 }
