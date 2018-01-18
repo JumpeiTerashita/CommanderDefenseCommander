@@ -129,11 +129,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1935f1fb01457ce4e871c0837e401d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
+  maxSpeed: 10
   accel: 0.01
-  maxRotDeg: 60
+  transformYValue: 30
   mainCamera: {fileID: 1526635976}
-  circleRadius: 1
+  circleRadius: 2
 --- !u!1 &122165728
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,6 +261,16 @@ Prefab:
     - target: {fileID: 114769087387318372, guid: d638fb5f1bb91d14aa08283dd0b80198,
         type: 2}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114375263706363728, guid: d638fb5f1bb91d14aa08283dd0b80198,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54352196828206128, guid: d638fb5f1bb91d14aa08283dd0b80198,
+        type: 2}
+      propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -843,8 +853,6 @@ MonoBehaviour:
   - {fileID: 2046557402}
   mainCamera: {fileID: 1526635976}
   light: {fileID: 122165728}
-  boidsController: {fileID: 1773256301128908, guid: 6b9ca4df3d05d664eba88c1f700f5ec0,
-    type: 2}
 --- !u!4 &2046557404
 Transform:
   m_ObjectHideFlags: 0
@@ -864,7 +872,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2046557402}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7f0cf1ccbb7fd24ea1be2c37e827cfa, type: 3}
   m_Name: 

@@ -88,6 +88,7 @@ namespace gami
                 pushAButton= true;
             }
 #endif
+            // ボタンが押されたら　反転＋フラグ処理
             if (pushAButton)
             {
                 this.transform.eulerAngles =
@@ -111,12 +112,12 @@ namespace gami
             reading = ControlEventGetter.Instance.reading;
         
 #endif
-            Debug.Log("circleRadius : " + Mathf.Sqrt((this.transform.position.x-mainCamera.transform.position.x)* (this.transform.position.x - mainCamera.transform.position.x)+ (this.transform.position.z - mainCamera.transform.position.z)* (this.transform.position.z - mainCamera.transform.position.z)));
+            //Debug.Log("circleRadius : " + Mathf.Sqrt((this.transform.position.x-mainCamera.transform.position.x)* (this.transform.position.x - mainCamera.transform.position.x)+ (this.transform.position.z - mainCamera.transform.position.z)* (this.transform.position.z - mainCamera.transform.position.z)));
             ControllerEvent();
             AccelAction();
             // 移動
             TransformPos();
-            mainCamera.transform.LookAt(this.transform);
+            //mainCamera.transform.LookAt(this.transform);
         }
 
         // AutoPilot時の速度取得 by KTB
