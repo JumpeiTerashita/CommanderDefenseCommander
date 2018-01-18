@@ -116,8 +116,8 @@ namespace gami
             ControllerEvent();
             AccelAction();
             // 移動
-            TransformPos();
-            //mainCamera.transform.LookAt(this.transform);
+            //TransformPos();
+            mainCamera.transform.LookAt(this.transform);
         }
 
         // AutoPilot時の速度取得 by KTB
@@ -145,12 +145,12 @@ namespace gami
             if (rightMove)
             {
                 this.transform.rotation *= Quaternion.AngleAxis(angle, new Vector3(0, 1, 0));
-        }
+            }
             else
             {
                 this.transform.rotation *= Quaternion.AngleAxis(-angle, new Vector3(0, 1, 0));
             }
-}
+        }
         private void TransformPos()
         {
             // 角度調整

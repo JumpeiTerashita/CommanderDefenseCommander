@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - checkPoint
   - Pillar
+  - Weapon
   layers:
   - Default
   - TransparentFX
