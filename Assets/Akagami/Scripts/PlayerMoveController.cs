@@ -22,7 +22,7 @@ namespace gami
         [SerializeField]
         public float accel = 0.001f;
         [SerializeField]
-        public float maxRotDeg = 60;
+        public float transformYValue = 30;
         [SerializeField]
         Camera mainCamera;
         [SerializeField]
@@ -30,22 +30,28 @@ namespace gami
 
         private float speed = 0.0001f;
         private const float NARROW_SPEED = 0.95f;
+        // プレイヤーを動かす際の角度保持
         private float angle = 0;
-        float yStick;
-       // private float 
+        // 演習の長さを保持
+        private float circleLength;
+        // 右に動くかのフラグとして利用
+        private bool rightMove = true;
 
         // コントローラー受付フラグ
         bool isControll = true;
+
         private void Start()
         {
             if (mainCamera != null)
             {
                 this.transform.position = mainCamera.transform.position;
             }
-            //this.transform.position += new Vector3(0, 0, circleRadius);
-            //this.transform.eulerAngles = new Vector3(0, mainCamera.transform.eulerAngles.y+90,0);
+            this.transform.position += new Vector3(0, 0, circleRadius);
+            this.transform.eulerAngles = new Vector3(0, mainCamera.transform.eulerAngles.y + 90,0);
+            circleLength = ( circleRadius * 2) * Mathf.PI;
             SetAngle();
         }
+
         void AccelAction()
         {
             speed *= NARROW_SPEED;
@@ -54,49 +60,48 @@ namespace gami
                 speed += accel;
             }
         }
-        void RotateAction()
+        void TransformYPos()
         {
-            yStick = 0;
-            float xStick = 0;
+            float yStick = 0;
 #if WINDOWS_UWP
-       
             // ゲームパッドの現在の状態を取得する
-            xStick = (float)reading.LeftThumbstickX;
             yStick = (float)reading.LeftThumbstickY;
             // 死に値を設定
-            if((xStick<=0.1f)&&(xStick>=-0.1f))xStick=0;
             if((yStick<=0.1f)&&(yStick>=-0.1f))yStick=0;
 #else
-            // Stick、Triggerに入力があれば値を保持
             yStick = Input.GetAxis("Player_Pitch") * -1;
-            xStick = Input.GetAxis("Player_Roll");
 #endif
-            // YawPitchRollの入力によって
-            // 現在の姿勢から値を変更していく
-
-            // 後々調節
+            // Stickの入力によって上下に移動
             this.transform.position +=
                 new Vector3(0, yStick * speed, 0);
-            //this.transform.rotation *= 
-            //    Quaternion.AngleAxis(yStick * maxRotDeg, new Vector3(1, 0, 0));
-            //this.transform.eulerAngles = new Vector3(
-            //    yStick * maxRotDeg,
-            //    this.transform.eulerAngles.y,
-            //    this.transform.eulerAngles.z);
-                  
-            if (xStick != 0)
-            {
-
-            }
-        
         }
-        
-  
+
+        private void TurnAction()
+        {
+            // Aボタンでフラグ処理
+            bool pushAButton = false;
+#if WINDOWS_UWP
+              if(reading.Buttons.HasFlag(GamepadButtons.A)&&!oldButton.Buttons.HasFlag(GamepadButtons.A))pushAButton = true;
+#else
+            if (Input.GetButtonDown("Select_Button_A"))
+            {
+                pushAButton= true;
+            }
+#endif
+            if (pushAButton)
+            {
+                this.transform.eulerAngles =
+                    new Vector3(this.transform.eulerAngles.x, this.transform.eulerAngles.y + 180, this.transform.eulerAngles.z);
+                rightMove = !rightMove;
+            }
+        }
+
         // 各アクションをコントローラーイベントに保持
         void ControllerEvent()
         {
             if (isControll == false) return;
-            RotateAction();
+            TransformYPos();
+            TurnAction();
         }
         void Update()
         {
@@ -106,12 +111,10 @@ namespace gami
             reading = ControlEventGetter.Instance.reading;
         
 #endif
-
             Debug.Log("circleRadius : " + Mathf.Sqrt((this.transform.position.x-mainCamera.transform.position.x)* (this.transform.position.x - mainCamera.transform.position.x)+ (this.transform.position.z - mainCamera.transform.position.z)* (this.transform.position.z - mainCamera.transform.position.z)));
             ControllerEvent();
             AccelAction();
-            this.transform.rotation *= Quaternion.AngleAxis(angle/speed, new Vector3(0, 1, 0));
-            //Debug.Log(angle / speed);
+            // 移動
             TransformPos();
             mainCamera.transform.LookAt(this.transform);
         }
@@ -136,22 +139,29 @@ namespace gami
 
         private void SetAngle()
         {
-            Vector2 pos1 = new Vector2((Mathf.Sin(0) * circleRadius), (Mathf.Cos(0) * circleRadius)) * speed;
-            Vector2 pos2 = new Vector2((Mathf.Sin(1 * Mathf.Deg2Rad) * circleRadius ), (Mathf.Cos(1 * Mathf.Deg2Rad) * circleRadius)) * speed;
-            angle = Vector2.Angle(pos1, pos2);
+            // 角度は現在のスピードの移動距離を円の１°あたりの移動距離で割ったものを使用
+            angle = speed / (circleLength / 360);
+            if (rightMove)
+            {
+                this.transform.rotation *= Quaternion.AngleAxis(angle, new Vector3(0, 1, 0));
         }
+            else
+            {
+                this.transform.rotation *= Quaternion.AngleAxis(-angle, new Vector3(0, 1, 0));
+            }
+}
         private void TransformPos()
         {
+            // 角度調整
             SetAngle();
-            this.transform.localEulerAngles =
-                new Vector3(0, this.transform.eulerAngles.y, 0);
+            // 向いている方向＊スピード値にポジションを移動
+
             this.transform.position +=
                 new Vector3(
                     Mathf.Sin(this.transform.eulerAngles.y * Mathf.Deg2Rad),
                     0,
-                    Mathf.Cos(this.transform.eulerAngles.y * Mathf.Deg2Rad))*speed;
-            //this.transform.rotation *= Quaternion.AngleAxis(yStick * maxRotDeg,
-            //    new Vector3(1,0,0));
+                    Mathf.Cos(this.transform.eulerAngles.y * Mathf.Deg2Rad)) * speed;
+         
         }
     }
 
