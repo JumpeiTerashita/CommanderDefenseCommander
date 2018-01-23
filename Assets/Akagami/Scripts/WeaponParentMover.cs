@@ -17,6 +17,8 @@ namespace gami
         void Update()
         {
             this.transform.position = player.transform.position;
+            this.transform.localEulerAngles =
+                new Vector3(this.transform.eulerAngles.x, player.transform.eulerAngles.y + 270, this.transform.eulerAngles.z);
         }
     }
 
