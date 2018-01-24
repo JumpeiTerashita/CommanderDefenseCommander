@@ -40,32 +40,33 @@ namespace gami
             reading = 
             ControlEventGetter.Instance.reading;
             
-            if(reading.Buttons.HasFlag(GamepadButtons.X)){autoFlag = true;}
+            if(reading.Buttons.HasFlag(GamepadButtons.A)){autoFlag = true;}
 #else
-            if (Input.GetButtonDown("AutoPilot")) autoFlag = true;
+            if (Input.GetButtonDown("Select_Button_A")) autoFlag = true;
 #endif
             // ボタンが押されたら
             if (autoFlag == true)
             {
-               mainCamera.transform.parent = null;
+                SceneManager.LoadScene("Terashita/Scenes/Tutorial");
+                //mainCamera.transform.parent = null;
           
                 // オブジェクト削除
-                gami.OpeningSceneManager.DestroyOpeningObjects();
+               // gami.OpeningSceneManager.DestroyOpeningObjects();
                     // タイマー作動
                 //gami.OpeningSceneManager.CreateGameSceneObj();
                 //}
                 
                 // コントローラーの受付開始
-                player.GetComponent<gami.PlayerMoveController>().SetControllerFlag(true);
-                SceneManager.LoadScene("Tutorial");
+                //player.GetComponent<gami.PlayerMoveController>().SetControllerFlag(true);
+               
             }
-            else
-            {
+            //else
+            //{
                 //mainCamera.SetActive(false);
                 //player.transform.rotation *= Quaternion.AngleAxis(PLAYER_ROTATE_ANGLE, new Vector3(0, 1, 0));
-                player.GetComponent<gami.PlayerMoveController>().SetControllerFlag(false);
+                //player.GetComponent<gami.PlayerMoveController>().SetControllerFlag(false);
 
-            }
+            //}
         }
         //private void SetPos()
         //{
