@@ -152,70 +152,20 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114585689993490742, guid: d638fb5f1bb91d14aa08283dd0b80198,
+        type: 2}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1526635976}
     - target: {fileID: 114580042473582656, guid: d638fb5f1bb91d14aa08283dd0b80198,
         type: 2}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1526635976}
-    - target: {fileID: 114585689993490742, guid: d638fb5f1bb91d14aa08283dd0b80198,
+    - target: {fileID: 54352196828206128, guid: d638fb5f1bb91d14aa08283dd0b80198,
         type: 2}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1526635976}
-    - target: {fileID: 96378043590659020, guid: d638fb5f1bb91d14aa08283dd0b80198,
-        type: 2}
-      propertyPath: m_CastShadows
+      propertyPath: m_IsKinematic
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 96378043590659020, guid: d638fb5f1bb91d14aa08283dd0b80198,
-        type: 2}
-      propertyPath: m_ReceiveShadows
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 96378043590659020, guid: d638fb5f1bb91d14aa08283dd0b80198,
-        type: 2}
-      propertyPath: m_LightmapParameters
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 96378043590659020, guid: d638fb5f1bb91d14aa08283dd0b80198,
-        type: 2}
-      propertyPath: m_Parameters.colorGradient.key0.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 96378043590659020, guid: d638fb5f1bb91d14aa08283dd0b80198,
-        type: 2}
-      propertyPath: m_Parameters.colorGradient.key1.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 96378043590659020, guid: d638fb5f1bb91d14aa08283dd0b80198,
-        type: 2}
-      propertyPath: m_Parameters.colorGradient.key1.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 96378043590659020, guid: d638fb5f1bb91d14aa08283dd0b80198,
-        type: 2}
-      propertyPath: m_Parameters.colorGradient.key0.r
-      value: 0.007843138
-      objectReference: {fileID: 0}
-    - target: {fileID: 96378043590659020, guid: d638fb5f1bb91d14aa08283dd0b80198,
-        type: 2}
-      propertyPath: m_Parameters.colorGradient.key0.g
-      value: 0.2509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 96378043590659020, guid: d638fb5f1bb91d14aa08283dd0b80198,
-        type: 2}
-      propertyPath: m_Parameters.colorGradient.key0.b
-      value: 0.9647059
-      objectReference: {fileID: 0}
-    - target: {fileID: 96378043590659020, guid: d638fb5f1bb91d14aa08283dd0b80198,
-        type: 2}
-      propertyPath: m_Parameters.colorGradient.key1.b
-      value: 0.14482737
-      objectReference: {fileID: 0}
-    - target: {fileID: 114585689993490742, guid: d638fb5f1bb91d14aa08283dd0b80198,
-        type: 2}
-      propertyPath: maxSpeed
-      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d638fb5f1bb91d14aa08283dd0b80198, type: 2}
