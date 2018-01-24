@@ -5,24 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Akagami/terrainGeneration.unity
-    guid: ad176000073b79148a1b52141b80a393
-  - enabled: 0
-    path: Assets/Akagami/opening.unity
-    guid: 6a1dd594847a44f46b82087e65266478
-  - enabled: 0
-    path: Assets/Terashita/Scenes/Shooting.unity
-    guid: b44502d580162a44a8050fdc21397150
-  - enabled: 0
-    path: Assets/Akagami/raceScene.unity
-    guid: 1a30efaa048a50549b2b3446247c759f
-  - enabled: 0
-    path: Assets/Akagami/InGameCrone.unity
-    guid: 1c0500d98d6ca8e4a9c32170df4f16c4
   - enabled: 1
-    path: Assets/Scenes/InGame.unity
-    guid: 42db0641bae58d14ca90c6e5600cb1bb
+    path: Assets/Scenes/Opening.unity
+    guid: 520ee36ea6c46184d978329f210055fc
+  - enabled: 1
+    path: Assets/Terashita/Scenes/Tutorial.unity
+    guid: 4e91b1e2534d9c54185bc13266329c66
   - enabled: 1
     path: Assets/Scenes/Result.unity
     guid: c46c56870db022b43a82e6f8096a4c9c
