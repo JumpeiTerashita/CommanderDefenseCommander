@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 199683433016414088}
   - component: {fileID: 123421688845129702}
   - component: {fileID: 114098231972727854}
+  - component: {fileID: 114490712424516732}
   m_Layer: 0
   m_Name: Exp1
   m_TagString: Untagged
@@ -55,6 +56,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyLimit: 1.2
+--- !u!114 &114490712424516732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1353848791378326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a1ce8956e4b86a46bc2d3e322edd9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!123 &123421688845129702
 LensFlare:
   m_ObjectHideFlags: 1
@@ -129,7 +141,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 697385835
+  randomSeed: 1244214604
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -2393,9 +2405,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -2539,7 +2551,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:

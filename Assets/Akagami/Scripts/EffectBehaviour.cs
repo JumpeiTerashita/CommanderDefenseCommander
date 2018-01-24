@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class EffectBehaviour : MonoBehaviour {
-
-    private void OnParticleCollision(GameObject other)
+namespace gami
+{
+    public class EffectBehaviour : MonoBehaviour
     {
-        //Debug.Log(other.transform.tag);
-        if (other.transform.tag == "Enemy")
+
+        private void OnParticleCollision(GameObject other)
         {
-            Collision col = null;
-            
+            Debug.Log(other.transform.tag);
+            if (other.transform.tag == "Enemy")
+            {
+                Collision col = null;
+                other.GetComponent<KTB.MissileBehavior>().CollisionProcess(col);
+            }
         }
     }
 }

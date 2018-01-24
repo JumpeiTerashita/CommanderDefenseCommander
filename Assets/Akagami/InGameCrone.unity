@@ -152,59 +152,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 17
       objectReference: {fileID: 0}
-    - target: {fileID: 1125660824912606, guid: 503ca1bbe0b805f4799448804b2b5eba, type: 2}
-      propertyPath: m_Name
-      value: Exp0Clone
-      objectReference: {fileID: 0}
-    - target: {fileID: 198191929512569958, guid: 503ca1bbe0b805f4799448804b2b5eba,
-        type: 2}
-      propertyPath: randomSeed
-      value: -101337564
-      objectReference: {fileID: 0}
-    - target: {fileID: 198191929512569958, guid: 503ca1bbe0b805f4799448804b2b5eba,
-        type: 2}
-      propertyPath: CollisionModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1125660824912606, guid: 503ca1bbe0b805f4799448804b2b5eba, type: 2}
-      propertyPath: m_TagString
-      value: Weapon
-      objectReference: {fileID: 0}
-    - target: {fileID: 198191929512569958, guid: 503ca1bbe0b805f4799448804b2b5eba,
-        type: 2}
-      propertyPath: CollisionModule.type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198191929512569958, guid: 503ca1bbe0b805f4799448804b2b5eba,
-        type: 2}
-      propertyPath: CollisionModule.collisionMessages
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198191929512569958, guid: 503ca1bbe0b805f4799448804b2b5eba,
-        type: 2}
-      propertyPath: SubModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198191929512569958, guid: 503ca1bbe0b805f4799448804b2b5eba,
-        type: 2}
-      propertyPath: SubModule.subEmitters.Array.data[0].type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198191929512569958, guid: 503ca1bbe0b805f4799448804b2b5eba,
-        type: 2}
-      propertyPath: SubModule.subEmitters.Array.data[0].emitter
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 198191929512569958, guid: 503ca1bbe0b805f4799448804b2b5eba,
-        type: 2}
-      propertyPath: TriggerModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198191929512569958, guid: 503ca1bbe0b805f4799448804b2b5eba,
-        type: 2}
-      propertyPath: TriggerModule.collisionShape0
-      value: 
-      objectReference: {fileID: 1652889027}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 503ca1bbe0b805f4799448804b2b5eba, type: 2}
   m_IsPrefabParent: 0
@@ -834,14 +781,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 22
       objectReference: {fileID: 0}
-    - target: {fileID: 1567375573218200, guid: 0a1c5998a1c7ffe468fd72508d80db6a, type: 2}
-      propertyPath: m_Name
-      value: Exp5Clone
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567375573218200, guid: 0a1c5998a1c7ffe468fd72508d80db6a, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a1c5998a1c7ffe468fd72508d80db6a, type: 2}
   m_IsPrefabParent: 0
@@ -883,14 +822,6 @@ Prefab:
     - target: {fileID: 4965926642668850, guid: 3ab82275e5b471b4591096145afd152c, type: 2}
       propertyPath: m_RootOrder
       value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 1669597948836028, guid: 3ab82275e5b471b4591096145afd152c, type: 2}
-      propertyPath: m_Name
-      value: Exp4Clone
-      objectReference: {fileID: 0}
-    - target: {fileID: 1669597948836028, guid: 3ab82275e5b471b4591096145afd152c, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ab82275e5b471b4591096145afd152c, type: 2}
@@ -1005,14 +936,6 @@ Prefab:
     - target: {fileID: 4502324296076528, guid: 2f664fbd0bd223c4894b6d5bc25c8350, type: 2}
       propertyPath: m_RootOrder
       value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028623033100434, guid: 2f664fbd0bd223c4894b6d5bc25c8350, type: 2}
-      propertyPath: m_Name
-      value: Exp2Clone
-      objectReference: {fileID: 0}
-    - target: {fileID: 1028623033100434, guid: 2f664fbd0bd223c4894b6d5bc25c8350, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f664fbd0bd223c4894b6d5bc25c8350, type: 2}
@@ -1175,22 +1098,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 1134289487101824, guid: 3293bf85d2b71ae4397118794b143470, type: 2}
-      propertyPath: m_Name
-      value: Exp3Clone
-      objectReference: {fileID: 0}
-    - target: {fileID: 1134289487101824, guid: 3293bf85d2b71ae4397118794b143470, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3293bf85d2b71ae4397118794b143470, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1652889027 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4129630569857348, guid: 503ca1bbe0b805f4799448804b2b5eba,
-    type: 2}
-  m_PrefabInternal: {fileID: 23987181}
 --- !u!1 &1729097984 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1850730992894404, guid: d29bc40b7f3df26479d6a0aac211c355,
@@ -1444,14 +1354,6 @@ Prefab:
     - target: {fileID: 4975132789851250, guid: 84dfe088c8225814996173d7217f0b82, type: 2}
       propertyPath: m_RootOrder
       value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 1353848791378326, guid: 84dfe088c8225814996173d7217f0b82, type: 2}
-      propertyPath: m_Name
-      value: Exp1Clone
-      objectReference: {fileID: 0}
-    - target: {fileID: 1353848791378326, guid: 84dfe088c8225814996173d7217f0b82, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84dfe088c8225814996173d7217f0b82, type: 2}
