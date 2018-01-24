@@ -20,28 +20,21 @@ namespace KTB
 
         private Subject<Collision> onCollision = new Subject<Collision>();
 
+        [SerializeField]
+        int TutorialID;
+
+        bool hasArrived;
+
         // Use this for initialization
         void Start()
         {
+            hasArrived = false;
             GameObject cameraObj = GameObject.Find("MixedRealityCameraParent");
             IsDead = false;
 
             GetComponent<DestinationHolder>().SetDestination(new Vector3( cameraObj.transform.position.x,transform.position.y,cameraObj.transform.position.z));
 
-            OnCollision().Subscribe(__ =>
-            {
-                Destroy(gameObject);
-                Debug.Log("Missile Break!!");
-                if(__.transform.tag == "Weapon")
-                {
-                    Vector3 hitPos = new Vector3(0, 0, 0);
-                    foreach (ContactPoint point in __.contacts)
-                    {
-                        hitPos = point.point;
-                    }
-                    __.gameObject.GetComponent<gami.WeaponController>().SetScale(hitPos);
-                }
-            });
+            OnCollision().Subscribe(col=>CollisionProcess(col));
             //Debug.Log(GetComponent<DestinationHolder>().GetDestination());
         }
 
@@ -72,16 +65,36 @@ namespace KTB
             return;
         }
 
-        // FIX : なんかうまくとれない　Colliderでやるべき
-        //void ArriveCheck()
-        //{
-        //    var Destination = GetComponent<DestinationHolder>().GetDestination();
-        //    Vector3 Distance = Destination - transform.position;
-        //    if (MyMath.IsShortLength(Destination, ArriveLength))
-        //    {
-        //        hasArrived = true;
-        //    }
-        //}
+        //FIX : なんかうまくとれない Colliderでやるべき
+        void ArriveCheck()
+        {
+            var Destination = GetComponent<DestinationHolder>().GetDestination();
+            Vector3 Distance = Destination - transform.position;
+            if (MyMath.IsShortLength(Destination, ArriveLength))
+            {
+                hasArrived = true;
+                Debug.Log("Has Arrived");
+            }
+        }
+
+        public void CollisionProcess(Collision collision)
+        {
+            Destroy(gameObject);
+            Debug.Log("Missile Break!!");
+
+            if (IsTutorial) InGameManager.Instance.Missile[TutorialID] = null;
+            else if (collision != null && collision.transform.tag == "Camera") return;
+            InGameManager.Instance.Score.Value++;
+            //if(col.transform.tag == "Weapon")
+            //{
+            //    Vector3 hitPos = new Vector3(0, 0, 0);
+            //    foreach (ContactPoint point in __.contacts)
+            //    {
+            //        hitPos = point.point;
+            //    }
+            //    __.gameObject.GetComponent<gami.WeaponController>().SetScale(hitPos);
+            //}
+        }
 
         private void OnCollisionEnter(Collision collision)
         {
