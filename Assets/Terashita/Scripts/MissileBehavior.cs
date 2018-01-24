@@ -77,12 +77,16 @@ namespace KTB
             }
         }
 
+        /// <summary>
+        /// ミサイルが物と当たったときの処理
+        /// </summary>
+        /// <param name="collision">当たるTargetのCollision</param>
         public void CollisionProcess(Collision collision)
         {
             Destroy(gameObject);
             Debug.Log("Missile Break!!");
 
-            if (IsTutorial) InGameManager.Instance.Missile[TutorialID] = null;
+            if (IsTutorial) { InGameManager.Instance.Missile[TutorialID] = null; return; }
             else if (collision != null && collision.transform.tag == "Camera") return;
             InGameManager.Instance.Score.Value++;
             //if(col.transform.tag == "Weapon")

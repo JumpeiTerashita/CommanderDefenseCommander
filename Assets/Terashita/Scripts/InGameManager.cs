@@ -22,6 +22,8 @@ namespace KTB
         [SerializeField]
         GameObject enemySpawner;
 
+        GameObject tutorialTube;
+
         void Start()
         {
             DontDestroyOnLoad(this.gameObject);
@@ -30,8 +32,7 @@ namespace KTB
                 Debug.Log("Now Score = "+score);
             });
             inGameManager = this.gameObject;
-            IsTutorial = true;
-            SearchMissile();
+            Refresh();
         }
 
         private void Update()
@@ -43,12 +44,14 @@ namespace KTB
                 {
                     if (Missile[i] != null) return;
                 }
-                Debug.Log("Tutorial Finished");
                 IsTutorial = false;
                 Instantiate(enemySpawner);
-            }
-            
 
+                Destroy(tutorialTube);
+
+                // TODO : ここでタイマー作動
+                
+            }
             
         }
 
@@ -61,15 +64,12 @@ namespace KTB
             }
         }
 
-        
-
-        //  TODO : TutorialMissileが死んだとき
-        //         InGameManagerのMissile[]をヌルにしよう
-        //         その為にMissleにIdを持たせよう！
-
-        void Refresh()
+        public void Refresh()
         {
+            tutorialTube = GameObject.Find("Tube");
+            IsTutorial = true;
             Score.Value = 0;
+            SearchMissile();
         }
     }
 }
