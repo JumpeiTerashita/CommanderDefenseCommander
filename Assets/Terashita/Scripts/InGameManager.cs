@@ -16,6 +16,12 @@ namespace KTB
         [System.NonSerialized]
         public GameObject[] Missile = new GameObject[4];
 
+        [System.NonSerialized]
+        public bool IsTutorial = true;
+
+        [SerializeField]
+        GameObject enemySpawner;
+
         void Start()
         {
             DontDestroyOnLoad(this.gameObject);
@@ -24,8 +30,26 @@ namespace KTB
                 Debug.Log("Now Score = "+score);
             });
             inGameManager = this.gameObject;
-
+            IsTutorial = true;
             SearchMissile();
+        }
+
+        private void Update()
+        {
+            if (IsTutorial)
+            {
+                //  TutorialMissileが全破壊されてればチュートリアル終了
+                for (int i = 0; i < 4; i++)
+                {
+                    if (Missile[i] != null) return;
+                }
+                Debug.Log("Tutorial Finished");
+                IsTutorial = false;
+                Instantiate(enemySpawner);
+            }
+            
+
+            
         }
 
         void SearchMissile()
@@ -36,6 +60,8 @@ namespace KTB
                 Debug.Log("Missile " + i + " Found");
             }
         }
+
+        
 
         //  TODO : TutorialMissileが死んだとき
         //         InGameManagerのMissile[]をヌルにしよう
