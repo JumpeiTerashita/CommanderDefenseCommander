@@ -49,10 +49,16 @@ namespace KTB
 
                 Destroy(tutorialTube);
 
-                // TODO : ここでタイマー作動
-                
+                TimeCreate();
             }
             
+        }
+
+        void TimeCreate()
+        {
+            GameObject obj = (GameObject)Resources.Load("TimeManager");
+            obj = Instantiate(obj);
+            obj.AddComponent<gami.ResultSceneLoader>();
         }
 
         void SearchMissile()
