@@ -61,7 +61,7 @@ namespace KTB
             {
                 IsDead = true;
                 this.GetComponent<Rigidbody>().detectCollisions = false;
-                InGameManager.Instance.Score.Value += destroyScore;
+                InGameManager.Instance.Score += destroyScore;
                 StartCoroutine(ExplosionPhase());
             }
         }

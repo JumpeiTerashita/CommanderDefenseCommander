@@ -17,7 +17,7 @@ namespace KTB
         // Use this for initialization
         void Start()
         {
-            scoreText.text = InGameManager.Instance.Score.Value.ToString();
+            scoreText.text = InGameManager.Instance.Score.ToString();
             Destroy(InGameManager.Instance.inGameManager);
             StartCoroutine(LoadNextScene());
         }

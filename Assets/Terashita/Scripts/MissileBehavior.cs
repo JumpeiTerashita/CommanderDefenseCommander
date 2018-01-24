@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UniRx;
+
 
 namespace KTB
 {
@@ -18,7 +18,7 @@ namespace KTB
 
         public bool IsTutorial;
 
-        private Subject<Collision> onCollision = new Subject<Collision>();
+        //private Subject<Collision> onCollision = new Subject<Collision>();
 
         [SerializeField]
         int TutorialID;
@@ -34,7 +34,7 @@ namespace KTB
 
             GetComponent<DestinationHolder>().SetDestination(new Vector3( cameraObj.transform.position.x,transform.position.y,cameraObj.transform.position.z));
 
-            OnCollision().Subscribe(col=>CollisionProcess(col));
+            //OnCollision().Subscribe(col=>CollisionProcess(col));
             //Debug.Log(GetComponent<DestinationHolder>().GetDestination());
         }
 
@@ -88,7 +88,7 @@ namespace KTB
 
             if (IsTutorial) { InGameManager.Instance.Missile[TutorialID] = null; return; }
             else if (collision != null && collision.transform.tag == "Camera") return;
-            InGameManager.Instance.Score.Value++;
+            InGameManager.Instance.Score++;
             //if(col.transform.tag == "Weapon")
             //{
             //    Vector3 hitPos = new Vector3(0, 0, 0);
@@ -102,12 +102,12 @@ namespace KTB
 
         private void OnCollisionEnter(Collision collision)
         {
-            onCollision.OnNext(collision);
+            CollisionProcess(collision);
         }
 
-        public IObservable<Collision> OnCollision()
-        {
-            return onCollision;
-        }
+        //public IObservable<Collision> OnCollision()
+        //{
+        //    return onCollision;
+        //}
     }
 }

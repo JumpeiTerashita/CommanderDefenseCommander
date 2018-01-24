@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UniRx;
+//using UniRx;
 
 namespace KTB
 {
@@ -11,7 +11,7 @@ namespace KTB
         public GameObject inGameManager;
 
         [System.NonSerialized]
-        public ReactiveProperty<int> Score = new ReactiveProperty<int>();
+        public int Score = 0;
 
         [System.NonSerialized]
         public GameObject[] Missile = new GameObject[4];
@@ -28,9 +28,9 @@ namespace KTB
         {
             DontDestroyOnLoad(this.gameObject);
             Debug.Log("InGameManager Initialized");
-            Score.Subscribe(score=> {
-                Debug.Log("Now Score = "+score);
-            });
+            //Score.Subscribe(score=> {
+            //    Debug.Log("Now Score = "+score);
+            //});
             inGameManager = this.gameObject;
             Refresh();
         }
@@ -74,7 +74,7 @@ namespace KTB
         {
             tutorialTube = GameObject.Find("Tube");
             IsTutorial = true;
-            Score.Value = 0;
+            Score = 0;
             SearchMissile();
         }
     }
