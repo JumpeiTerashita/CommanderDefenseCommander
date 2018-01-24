@@ -16,7 +16,7 @@ namespace KTB
 
         bool IsDead = false;
 
-        public bool IsTutorial; 
+        public bool IsTutorial;
 
         private Subject<Collision> onCollision = new Subject<Collision>();
 

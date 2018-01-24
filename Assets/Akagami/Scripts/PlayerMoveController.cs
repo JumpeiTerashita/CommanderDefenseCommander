@@ -117,7 +117,7 @@ namespace gami
             AccelAction();
             // 移動
             TransformPos();
-            mainCamera.transform.LookAt(this.transform);
+            //mainCamera.transform.LookAt(this.transform);
         }
 
         // AutoPilot時の速度取得 by KTB
