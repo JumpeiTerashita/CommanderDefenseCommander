@@ -134,7 +134,7 @@ MonoBehaviour:
   transformYValue: 30
   mainCamera: {fileID: 1526635976}
   circleRadius: 2
-  heightLimit: 1.5
+  heightLimit: 3
   stickMag: 0.01
 --- !u!1 &122165728
 GameObject:

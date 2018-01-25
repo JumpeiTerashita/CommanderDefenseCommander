@@ -965,7 +965,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4549717469860858, guid: 6979e0de277024640a12a22e9e5327cb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4549717469860858, guid: 6979e0de277024640a12a22e9e5327cb, type: 2}
       propertyPath: m_LocalPosition.z
@@ -990,6 +990,11 @@ Prefab:
     - target: {fileID: 4549717469860858, guid: 6979e0de277024640a12a22e9e5327cb, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114301759145152606, guid: 6979e0de277024640a12a22e9e5327cb,
+        type: 2}
+      propertyPath: height
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6979e0de277024640a12a22e9e5327cb, type: 2}
@@ -1395,6 +1400,16 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114539635663821456, guid: bff7b9a009882554b857e15a47e32ab9,
+        type: 2}
+      propertyPath: maxSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114539635663821456, guid: bff7b9a009882554b857e15a47e32ab9,
+        type: 2}
+      propertyPath: accel
+      value: 0.03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bff7b9a009882554b857e15a47e32ab9, type: 2}
