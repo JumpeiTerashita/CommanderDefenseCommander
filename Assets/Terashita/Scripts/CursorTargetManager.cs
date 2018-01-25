@@ -9,11 +9,14 @@ namespace KTB
     {
         InGameManager inGameInstance;
         GameObject cursor;
+        bool isTutorial;
+        int missileMinNum;
+
         // Use this for initialization
         void Start()
         {
             cursor = GameObject.Find("arrowCursor");
-
+            isTutorial = true;
             //cursor.GetComponent<gami.CursolFacePlayer>().lookAtTarget = InGameManager.Instance.Missile[0];
             inGameInstance = InGameManager.Instance;
         }
@@ -21,11 +24,41 @@ namespace KTB
         // Update is called once per frame
         void Update()
         {
-            if (cursor.GetComponent<gami.CursolFacePlayer>().lookAtTarget == null)
+            if (isTutorial)
             {
-                var missileNum = inGameInstance.GetMissileNum();
-                cursor.GetComponent<gami.CursolFacePlayer>().lookAtTarget = inGameInstance.Missile[missileNum];
+                if (cursor.GetComponent<gami.CursolFacePlayer>().lookAtTarget == null)
+                {
+                    var missileNum = inGameInstance.GetMissileNum();
+                    if (missileNum == 4)
+                    {
+                        isTutorial = false;
+                        missileMinNum = 4;
+                        return;
+                    }
+                    cursor.GetComponent<gami.CursolFacePlayer>().lookAtTarget = inGameInstance.Missile[missileNum];
+                }
             }
+            else
+            {
+                if (cursor.GetComponent<gami.CursolFacePlayer>().lookAtTarget == null)
+                {
+                    int missileNumber = missileMinNum;
+                    bool missileFound = false;
+
+                    while (missileFound)
+                    {
+                        if (GameObject.Find("Missile" + missileNumber) != null)
+                        {
+                            missileFound = true;
+                        }
+                    }
+
+                    missileMinNum = missileNumber;
+                    cursor.GetComponent<gami.CursolFacePlayer>().lookAtTarget = GameObject.Find("Missile"+missileNumber);
+                    
+                }
+            }
+
         }
 
         

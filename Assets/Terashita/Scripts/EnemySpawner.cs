@@ -35,11 +35,14 @@ namespace KTB
         bool isRunning = false;
         bool isAlreadySpawn = false;
 
+        int missileId;
+
         // Use this for initialization
         void Start()
         {
             Player = GameObject.Find("Player");
             if (!Player) Destroy(gameObject);
+            missileId = 3;
         }
 
         void Update()
@@ -69,8 +72,9 @@ namespace KTB
                     Random.Range(-RandomRange, RandomRange),
                     SpawnLength * Mathf.Sin(RandomThita)
                     );
+                missileId++;
                 GameObject SpawnedEnemy = Instantiate(Enemy, SpawnPoint, Quaternion.identity);
-                
+                SpawnedEnemy.name = ("Missile"+missileId);
                 SpawnedEnemy.transform.LookAt(Player.transform.position);
                 //Debug.Log(Player.transform.position);
                 //Debug.Log(SpawnedEnemy.transform.forward);
