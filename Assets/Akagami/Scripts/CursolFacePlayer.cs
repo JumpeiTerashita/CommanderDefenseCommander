@@ -41,7 +41,7 @@ namespace gami
             float angleDir = this.transform.eulerAngles.y * Mathf.Deg2Rad;
             Vector3 dir = new Vector3(
                 Mathf.Sin(angleDir), 
-                Mathf.Sin(-this.transform.eulerAngles.x * Mathf.Deg2Rad), 
+                Mathf.Sin(-this.transform.eulerAngles.x * Mathf.Deg2Rad)-0.05f, 
                 Mathf.Cos(angleDir));
             this.transform.position += dir * CURSOR_LENGTH;
         }
