@@ -61,6 +61,15 @@ namespace KTB
             obj.AddComponent<gami.ResultSceneLoader>();
         }
 
+        public int GetMissileNum()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (Missile[i] != null) return i;
+            }
+            return 4;
+        }
+
         void SearchMissile()
         {
             for (int i = 0; i < 4; i++)

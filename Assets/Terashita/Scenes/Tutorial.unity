@@ -1391,6 +1391,11 @@ Prefab:
       propertyPath: circleRadius
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114111341373769662, guid: bff7b9a009882554b857e15a47e32ab9,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bff7b9a009882554b857e15a47e32ab9, type: 2}
   m_IsPrefabParent: 0
