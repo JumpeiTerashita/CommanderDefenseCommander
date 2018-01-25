@@ -27,6 +27,8 @@ namespace gami
         Camera mainCamera;
         [SerializeField]
         public float circleRadius = 1;
+        [SerializeField]
+        private float heightLimit = 1.5f;
 
         private float speed = 0.0001f;
         private const float NARROW_SPEED = 0.95f;
@@ -36,9 +38,10 @@ namespace gami
         private float circleLength;
         // 右に動くかのフラグとして利用
         private bool rightMove = true;
-
         // コントローラー受付フラグ
         bool isControll = true;
+
+        
 
         private void Start()
         {
@@ -71,9 +74,13 @@ namespace gami
 #else
             yStick = Input.GetAxis("Player_Pitch") * -1;
 #endif
-            // Stickの入力によって上下に移動
-            this.transform.position +=
-                new Vector3(0, yStick * speed, 0);
+            if (this.transform.position.y + yStick >= -heightLimit &&
+                this.transform.position.y + yStick <= heightLimit)
+            {
+                // Stickの入力によって上下に移動
+                this.transform.position +=
+                    new Vector3(0, yStick * speed, 0);
+            }
         }
 
         private void TurnAction()
@@ -156,7 +163,6 @@ namespace gami
             // 角度調整
             SetAngle();
             // 向いている方向＊スピード値にポジションを移動
-
             this.transform.position +=
                 new Vector3(
                     Mathf.Sin(this.transform.eulerAngles.y * Mathf.Deg2Rad),
