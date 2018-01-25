@@ -39,7 +39,10 @@ namespace gami
             this.transform.position = baseObj.transform.position;
             this.transform.eulerAngles = baseObj.transform.eulerAngles;
             float angleDir = this.transform.eulerAngles.y * Mathf.Deg2Rad;
-            Vector3 dir = new Vector3(Mathf.Sin(angleDir), 0, Mathf.Cos(angleDir));
+            Vector3 dir = new Vector3(
+                Mathf.Sin(angleDir), 
+                Mathf.Sin(this.transform.eulerAngles.x), 
+                Mathf.Cos(angleDir));
             this.transform.position += dir * CURSOR_LENGTH;
         }
         // カーソルの回転値を調整

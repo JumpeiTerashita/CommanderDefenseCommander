@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using KTB;
-namespace gami
-{
+
 #if WINDOWS_UWP
 using Windows.Gaming.Input;
+#endif
+namespace gami
+{
     public class ControlEventGetter : SingleTon<ControlEventGetter>
     {
+        private int notInputCount;
+#if WINDOWS_UWP
         public Gamepad controller;
         public GamepadReading reading;
         //public static GamepadReading oldButton;
-
         // Use this for initialization
         void Start()
         {
@@ -41,18 +44,8 @@ using Windows.Gaming.Input;
         {
             controller = e;
         }
-    }
 #else
 
-    public class ControlEventGetter : SingleTon<ControlEventGetter>
-    {
-        
-        // Update is called once per frame
-        void Update()
-        {
-            //Debug.Log("t3st");
-        }
-       
-    }
 #endif
+    }
 }
