@@ -25,8 +25,11 @@ namespace KTB
         [SerializeField]
         float SpawnRandomTime = 0.5f;
 
+        /// <summary>
+        /// 上下のランダム範囲　- RandomRange から  RandomRange まで
+        /// </summary>
         [SerializeField]
-        float RandomRange = 1.5f;
+        public float RandomRange = 1.5f;
 
         bool isStarted = false;
         bool isRunning = false;
@@ -63,7 +66,7 @@ namespace KTB
                 Vector3 SpawnPoint = new Vector3(
                     SpawnLength * Mathf.Cos(RandomThita),
                     //transform.position.x + Random.Range(-RandomRange, RandomRange),
-                    transform.position.y + Random.Range(-RandomRange, RandomRange),
+                    Random.Range(-RandomRange, RandomRange),
                     SpawnLength * Mathf.Sin(RandomThita)
                     );
                 GameObject SpawnedEnemy = Instantiate(Enemy, SpawnPoint, Quaternion.identity);

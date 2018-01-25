@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: bc52d600340461341bbc5a5dc80198a0
+timeCreated: 1516864141
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Sencoron
+  fontNames:
+  - Sencoron
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
