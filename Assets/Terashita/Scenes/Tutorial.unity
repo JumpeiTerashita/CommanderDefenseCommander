@@ -842,6 +842,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114061490341948574, guid: d29bc40b7f3df26479d6a0aac211c355,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061490341948574, guid: d29bc40b7f3df26479d6a0aac211c355,
+        type: 2}
+      propertyPath: JoystickSupported
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d29bc40b7f3df26479d6a0aac211c355, type: 2}
   m_IsPrefabParent: 0
@@ -854,7 +864,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 697764456}
-  - component: {fileID: 697764455}
   - component: {fileID: 697764454}
   - component: {fileID: 697764453}
   - component: {fileID: 697764452}
@@ -883,6 +892,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseObj: {fileID: 1526635971}
+  playerMissile: {fileID: 1840497206885708, guid: 961f047ff837c7740b90676ee6ed3bf6,
+    type: 2}
 --- !u!114 &697764447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,7 +1065,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 697764445}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 1
   m_Direction: 1
@@ -1104,22 +1115,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_DirtyAABB: 1
---- !u!54 &697764455
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 54267989229929778, guid: bff7b9a009882554b857e15a47e32ab9,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 697764445}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!4 &697764456
 Transform:
   m_ObjectHideFlags: 0

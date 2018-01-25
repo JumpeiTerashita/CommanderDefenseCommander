@@ -21,6 +21,10 @@ namespace gami
         private static GameObject arrow;
         [SerializeField]
         public const float CURSOR_LENGTH = 2;
+
+        [SerializeField]
+        GameObject playerMissile;
+
         private void Start()
         {
             // 自信を保持
@@ -44,7 +48,11 @@ namespace gami
 #endif
             if (pushAButton)
             {
-                
+                Debug.Log("Fire");
+                var bullet = Instantiate(playerMissile);
+                bullet.transform.position = transform.position;
+                bullet.GetComponent<KTB.DestinationHolder>().SetDestination(CursorInfo.GetCursorPos()) ;
+
             }
         }
         private void ControllerEvent()
