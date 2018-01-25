@@ -51,6 +51,7 @@ namespace KTB
                         {
                             missileFound = true;
                         }
+                        missileNumber++;
                     }
 
                     missileMinNum = missileNumber;

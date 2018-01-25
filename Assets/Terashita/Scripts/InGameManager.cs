@@ -47,7 +47,9 @@ namespace KTB
                 IsTutorial = false;
                 Instantiate(enemySpawner);
 
+                GameObject tutorialCanvas = GameObject.Find("TutorialCanvas");
                 Destroy(tutorialTube);
+                Destroy(tutorialCanvas);
 
                 TimeCreate();
             }
