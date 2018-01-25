@@ -29,8 +29,10 @@ namespace gami
         public float circleRadius = 1;
         [SerializeField]
         private float heightLimit = 4.5f;
-
+        [SerializeField]
+        private float stickMag = 0.01f;
         private float speed = 0.0001f;
+
         private const float NARROW_SPEED = 0.95f;
         // プレイヤーを動かす際の角度保持
         private float angle = 0;
@@ -74,12 +76,26 @@ namespace gami
 #else
             yStick = Input.GetAxis("Player_Pitch") * -1;
 #endif
+            yStick *= stickMag;
             if (this.transform.position.y + yStick >= -heightLimit &&
                 this.transform.position.y + yStick <= heightLimit)
             {
                 // Stickの入力によって上下に移動
                 this.transform.position +=
-                    new Vector3(0, yStick * speed, 0);
+                    new Vector3(0, yStick, 0);
+            }
+            else
+            {
+                if(this.transform.position.y + yStick <= -heightLimit)
+                {
+                    this.transform.position = 
+                        new Vector3(this.transform.position.x,-heightLimit,this.transform.position.z);
+                }
+                if (this.transform.position.y + yStick >= heightLimit)
+                {
+                    this.transform.position =
+                        new Vector3(this.transform.position.x, heightLimit, this.transform.position.z);
+                }
             }
         }
 
@@ -168,8 +184,6 @@ namespace gami
                     Mathf.Sin(this.transform.eulerAngles.y * Mathf.Deg2Rad),
                     0,
                     Mathf.Cos(this.transform.eulerAngles.y * Mathf.Deg2Rad)) * speed;
-         
         }
     }
-
 }
