@@ -28,7 +28,7 @@ namespace gami
         [SerializeField]
         public float circleRadius = 1;
         [SerializeField]
-        private float heightLimit = 1.5f;
+        private float heightLimit = 4.5f;
 
         private float speed = 0.0001f;
         private const float NARROW_SPEED = 0.95f;
