@@ -43,25 +43,28 @@ namespace KTB
                 if (cursor.GetComponent<gami.CursolFacePlayer>().lookAtTarget == null)
                 {
                     Debug.Log("I ' ll search missile");
-                    int missileNumber = missileMinNum;
-                    bool missileFound = false;
+                    
 
-                    while (missileFound)
-                    {
-                        if (GameObject.Find("Missile" + missileNumber.ToString()) != null)
-                        {
-                            Debug.Log("Missile OK");
-                            missileFound = true;
-                        }
-                        else
-                        {
-                            Debug.Log("Missile NG");
-                            missileNumber++;
-                        }
-                    }
+                    cursor.GetComponent<gami.CursolFacePlayer>().lookAtTarget = EnemyListManager.Instance.GetList(0);
 
-                    missileMinNum = missileNumber;
-                    cursor.GetComponent<gami.CursolFacePlayer>().lookAtTarget = GameObject.Find("Missile"+missileNumber.ToString());
+                    //bool missileFound = false;
+
+                    //while (missileFound)
+                    //{
+                    //    if (GameObject.Find("Missile" + missileNumber.ToString()) != null)
+                    //    {
+                    //        Debug.Log("Missile OK");
+                    //        missileFound = true;
+                    //    }
+                    //    else
+                    //    {
+                    //        Debug.Log("Missile NG");
+                    //        missileNumber++;
+                    //    }
+                    //}
+
+                    //missileMinNum = missileNumber;
+                    //cursor.GetComponent<gami.CursolFacePlayer>().lookAtTarget = GameObject.Find("Missile"+missileNumber.ToString());
                     
                 }
             }
