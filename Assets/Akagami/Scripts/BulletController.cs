@@ -8,6 +8,7 @@ namespace gami
     {
         Vector3 speed;
         float mag = .1f;
+        float activeCount = 3;
         // Use this for initialization
         void Start()
         {
@@ -23,6 +24,7 @@ namespace gami
         {
             GameObject instance = Instantiate(this.gameObject);
             instance.transform.position = _pos;
+            instance.AddComponent<KTB.AutoDestroy>().SetDestroyLimit(activeCount);
             return instance;
         }
         public void SetSpeed(Vector3 _speed)
