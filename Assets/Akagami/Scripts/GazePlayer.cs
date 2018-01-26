@@ -35,6 +35,10 @@ namespace gami
         }
         private void Update()
         {
+#if WINDOWS_UWP
+            oldButton = reading;
+            reading = ControlEventGetter.Instance.reading;
+#endif
             SetCursorPos();
             ControllerEvent();
             //SetCursorRotation();
@@ -56,7 +60,7 @@ namespace gami
                 //Debug.Log("Fire");
                 //var bullet = Instantiate(playerMissile);
                 //bullet.transform.position = transform.position;
-                //Vector3 targetPos = (CursorInfo.GetCursorPos() - baseObj.transform.position) * 10;
+                Vector3 targetPos = (CursorInfo.GetCursorPos() - baseObj.transform.position);
                 //Debug.Log(CursorInfo.GetCursorPos().z);
                 //    //Vector3.Angle(baseObj.transform.position,CursorInfo.GetCursorPos()) * POS_LENGTH;
                 //bullet.GetComponent<KTB.DestinationHolder>().SetDestination(targetPos) ;
