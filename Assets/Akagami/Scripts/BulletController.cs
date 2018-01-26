@@ -29,5 +29,10 @@ namespace gami
         {
             speed = _speed;
         }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.transform.tag == "Player") return;
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 #if WINDOWS_UWP
 using Windows.Gaming.Input;
 #endif
+
 namespace gami
 {
     public class GazePlayer : MonoBehaviour
@@ -51,13 +52,14 @@ namespace gami
 #endif
             if (pushAButton)
             {
-                Debug.Log("Fire");
-                var bullet = Instantiate(playerMissile);
-                bullet.transform.position = transform.position;
-                Vector3 targetPos = (CursorInfo.GetCursorPos() - baseObj.transform.position) * 10;
-                Debug.Log(CursorInfo.GetCursorPos().z);
-                    //Vector3.Angle(baseObj.transform.position,CursorInfo.GetCursorPos()) * POS_LENGTH;
-                bullet.GetComponent<KTB.DestinationHolder>().SetDestination(targetPos) ;
+
+                //Debug.Log("Fire");
+                //var bullet = Instantiate(playerMissile);
+                //bullet.transform.position = transform.position;
+                //Vector3 targetPos = (CursorInfo.GetCursorPos() - baseObj.transform.position) * 10;
+                //Debug.Log(CursorInfo.GetCursorPos().z);
+                //    //Vector3.Angle(baseObj.transform.position,CursorInfo.GetCursorPos()) * POS_LENGTH;
+                //bullet.GetComponent<KTB.DestinationHolder>().SetDestination(targetPos) ;
 
                 //GameObject obj = Instantiate(bulletObj);
                 //obj.transform.position = this.transform.position;
