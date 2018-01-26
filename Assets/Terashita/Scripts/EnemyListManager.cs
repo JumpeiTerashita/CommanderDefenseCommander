@@ -19,7 +19,8 @@ namespace KTB
             {
                 if (missileList[i].GetComponent<MissileBehavior>().id == _id)
                 {
-                    Destroy(missileList[i]);
+                    missileList.RemoveAt(i);
+                    //Destroy(missileList[i]);
                     break;
                 }
             }
