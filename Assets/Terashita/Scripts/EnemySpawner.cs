@@ -75,6 +75,7 @@ namespace KTB
                 missileId++;
                 GameObject SpawnedEnemy = Instantiate(Enemy, SpawnPoint, Quaternion.identity);
                 SpawnedEnemy.name = ("Missile"+missileId);
+                SpawnedEnemy.GetComponent<MissileBehavior>().id = missileId;
                 SpawnedEnemy.transform.LookAt(Player.transform.position);
                 //Debug.Log(Player.transform.position);
                 //Debug.Log(SpawnedEnemy.transform.forward);

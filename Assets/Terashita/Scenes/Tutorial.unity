@@ -855,6 +855,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d29bc40b7f3df26479d6a0aac211c355, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &694405591
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4388306246884986, guid: 20315672f4712ee4fa785e728edecfe2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388306246884986, guid: 20315672f4712ee4fa785e728edecfe2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388306246884986, guid: 20315672f4712ee4fa785e728edecfe2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388306246884986, guid: 20315672f4712ee4fa785e728edecfe2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388306246884986, guid: 20315672f4712ee4fa785e728edecfe2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388306246884986, guid: 20315672f4712ee4fa785e728edecfe2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388306246884986, guid: 20315672f4712ee4fa785e728edecfe2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388306246884986, guid: 20315672f4712ee4fa785e728edecfe2, type: 2}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 20315672f4712ee4fa785e728edecfe2, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &697764445
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,6 +936,7 @@ MonoBehaviour:
   baseObj: {fileID: 1526635971}
   playerMissile: {fileID: 1840497206885708, guid: 961f047ff837c7740b90676ee6ed3bf6,
     type: 2}
+  bulletObj: {fileID: 1348406370808688, guid: 039903388fff85e4297881ac068f84eb, type: 2}
 --- !u!114 &697764447
 MonoBehaviour:
   m_ObjectHideFlags: 0
