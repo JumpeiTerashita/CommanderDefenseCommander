@@ -21,7 +21,7 @@ namespace KTB
         //private Subject<Collision> onCollision = new Subject<Collision>();
 
         [SerializeField]
-        int TutorialID;
+        public int id;
 
         bool hasArrived;
 
@@ -86,8 +86,9 @@ namespace KTB
             Destroy(gameObject);
             Debug.Log("Missile Break!!");
 
-            if (IsTutorial) { InGameManager.Instance.Missile[TutorialID] = null; return; }
+            if (IsTutorial) { InGameManager.Instance.Missile[id] = null; return; }
             else if (collision != null && collision.transform.tag == "Camera") return;
+            EnemyListManager.Instance.DelList(id);
             InGameManager.Instance.Score++;
             //if(col.transform.tag == "Weapon")
             //{
