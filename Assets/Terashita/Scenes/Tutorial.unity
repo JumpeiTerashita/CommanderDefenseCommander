@@ -894,6 +894,7 @@ MonoBehaviour:
   baseObj: {fileID: 1526635971}
   playerMissile: {fileID: 1840497206885708, guid: 961f047ff837c7740b90676ee6ed3bf6,
     type: 2}
+  bulletObj: {fileID: 1348406370808688, guid: 039903388fff85e4297881ac068f84eb, type: 2}
 --- !u!114 &697764447
 MonoBehaviour:
   m_ObjectHideFlags: 0

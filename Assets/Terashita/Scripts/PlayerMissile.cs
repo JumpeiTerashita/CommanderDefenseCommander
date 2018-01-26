@@ -32,7 +32,7 @@ namespace KTB
             GameObject cameraObj = GameObject.Find("MixedRealityCameraParent");
             IsDead = false;
 
-            GetComponent<DestinationHolder>().SetDestination(new Vector3(cameraObj.transform.position.x, transform.position.y, cameraObj.transform.position.z));
+            //GetComponent<DestinationHolder>().SetDestination(new Vector3(cameraObj.transform.position.x, transform.position.y, cameraObj.transform.position.z));
 
             //OnCollision().Subscribe(col=>CollisionProcess(col));
             //Debug.Log(GetComponent<DestinationHolder>().GetDestination());
@@ -83,7 +83,7 @@ namespace KTB
         /// <param name="collision">当たるTargetのCollision</param>
         public void CollisionProcess(Collision collision)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             //Debug.Log("Missile Break!!");
 
             //if (IsTutorial) { InGameManager.Instance.Missile[TutorialID] = null; return; }

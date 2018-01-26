@@ -20,11 +20,13 @@ namespace gami
         // 非アクティブの際に外部からアクセスするための変数
         private static GameObject arrow;
         [SerializeField]
-        public const float CURSOR_LENGTH = 2;
+        public const float POS_LENGTH = 2;
 
         [SerializeField]
         GameObject playerMissile;
 
+        [SerializeField]
+        GameObject bulletObj;
         private void Start()
         {
             // 自信を保持
@@ -33,6 +35,7 @@ namespace gami
         private void Update()
         {
             SetCursorPos();
+            ControllerEvent();
             //SetCursorRotation();
         }
         private void AttackAction()
@@ -51,13 +54,20 @@ namespace gami
                 Debug.Log("Fire");
                 var bullet = Instantiate(playerMissile);
                 bullet.transform.position = transform.position;
-                bullet.GetComponent<KTB.DestinationHolder>().SetDestination(CursorInfo.GetCursorPos()) ;
+                Vector3 targetPos = (CursorInfo.GetCursorPos() - baseObj.transform.position) * 10;
+                Debug.Log(CursorInfo.GetCursorPos().z);
+                    //Vector3.Angle(baseObj.transform.position,CursorInfo.GetCursorPos()) * POS_LENGTH;
+                bullet.GetComponent<KTB.DestinationHolder>().SetDestination(targetPos) ;
 
+                //GameObject obj = Instantiate(bulletObj);
+                //obj.transform.position = this.transform.position;
+                GameObject obj = bulletObj.GetComponent<gami.BulletController>().CreateBullet(this.transform.position);
+                obj.GetComponent<gami.BulletController>().SetSpeed(targetPos.normalized);
             }
         }
         private void ControllerEvent()
         {
-
+            AttackAction();
         }
         // カーソルの位置調整
         private void SetCursorPos()
@@ -71,9 +81,9 @@ namespace gami
             float angleDir = this.transform.eulerAngles.y * Mathf.Deg2Rad;
             Vector3 dir = new Vector3(
                 Mathf.Sin(angleDir),
-                Mathf.Sin(-this.transform.eulerAngles.x * Mathf.Deg2Rad),
+                Mathf.Sin(-this.transform.eulerAngles.x * Mathf.Deg2Rad)+0.05f,
                 Mathf.Cos(angleDir));
-            this.transform.position += dir * CURSOR_LENGTH;
+            this.transform.position += dir * POS_LENGTH;
         }
 
 
