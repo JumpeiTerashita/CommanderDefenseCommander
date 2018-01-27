@@ -1038,6 +1038,16 @@ Prefab:
       propertyPath: height
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114301759145152606, guid: 6979e0de277024640a12a22e9e5327cb,
+        type: 2}
+      propertyPath: scale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114301759145152606, guid: 6979e0de277024640a12a22e9e5327cb,
+        type: 2}
+      propertyPath: scale.z
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6979e0de277024640a12a22e9e5327cb, type: 2}
   m_IsPrefabParent: 0
